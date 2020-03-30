@@ -10,6 +10,8 @@ export interface IMovie {
   img: {
     src: string;
     alt: string;
+    width: number;
+    height: number;
   };
   videoSrc: string;
 }
@@ -21,6 +23,8 @@ export const movies: IMovie[] = [
     img: {
       src: img1,
       alt: 'Fantastic Beasts: The Crimes of Grindelwald',
+      width: 280,
+      height: 175,
     },
     videoSrc:
       'https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4',
@@ -31,6 +35,8 @@ export const movies: IMovie[] = [
     img: {
       src: img2,
       alt: 'Bohemian Rhapsody',
+      width: 280,
+      height: 175,
     },
     videoSrc:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
@@ -41,6 +47,8 @@ export const movies: IMovie[] = [
     img: {
       src: img3,
       alt: 'Macbeth',
+      width: 280,
+      height: 175,
     },
     videoSrc:
       'https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4',
@@ -51,6 +59,8 @@ export const movies: IMovie[] = [
     img: {
       src: img4,
       alt: 'Aviator',
+      width: 280,
+      height: 175,
     },
     videoSrc:
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
@@ -61,6 +71,8 @@ export const movies: IMovie[] = [
     img: {
       src: img5,
       alt: 'What We Do in the Shadows',
+      width: 280,
+      height: 175,
     },
     videoSrc:
       'https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4',
