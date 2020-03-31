@@ -23,7 +23,7 @@ export const VideoPlayer = ({ play, src, poster, delay }: VideoPlayerProps) => {
       {!start && (
         <img src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} />
       )}
-      <video src={src} ref={videoRef} width={poster.width} height={poster.height} />
+      <video src={src} ref={videoRef} width={poster.width} height={poster.height} muted />
     </>
   );
 };
