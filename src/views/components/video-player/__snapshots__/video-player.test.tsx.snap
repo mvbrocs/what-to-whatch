@@ -21,37 +21,13 @@ exports[`VideoPlayer not play renders properly 1`] = `
   />
   <video
     height={175}
-    muted={true}
     src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
     width={280}
   />
 </VideoPlayer>
 `;
 
-exports[`VideoPlayer play with delay should not render preview image when the delay expired 1`] = `
-<VideoPlayer
-  delay={1000}
-  play={true}
-  poster={
-    Object {
-      "alt": "Fantastic Beasts: The Crimes of Grindelwald",
-      "height": 175,
-      "src": "fantastic-beasts-the-crimes-of-grindelwald.jpg",
-      "width": 280,
-    }
-  }
-  src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
->
-  <video
-    height={175}
-    muted={true}
-    src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
-    width={280}
-  />
-</VideoPlayer>
-`;
-
-exports[`VideoPlayer play with delay should render preview image when the delay not expired 1`] = `
+exports[`VideoPlayer play with delay renders properly 1`] = `
 <VideoPlayer
   delay={1000}
   play={true}
@@ -73,7 +49,6 @@ exports[`VideoPlayer play with delay should render preview image when the delay 
   />
   <video
     height={175}
-    muted={true}
     src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
     width={280}
   />
@@ -95,7 +70,6 @@ exports[`VideoPlayer play without delay renders properly 1`] = `
 >
   <video
     height={175}
-    muted={true}
     src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
     width={280}
   />

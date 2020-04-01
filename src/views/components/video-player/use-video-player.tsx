@@ -27,6 +27,8 @@ export const useVideoPlayer = ({ play, delay, videoElement }: UseVideoPlayerArgs
 
   useEffect(() => {
     if (start && videoElement) {
+      // https://github.com/facebook/react/issues/10389#
+      videoElement.muted = true;
       videoElement.currentTime = 0;
       videoElement.play();
     } else if (videoElement) {

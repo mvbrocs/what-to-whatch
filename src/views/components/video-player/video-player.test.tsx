@@ -38,13 +38,16 @@ describe('VideoPlayer', () => {
         <VideoPlayer {...videoPlayerAssetsMock} play={true} delay={1000} />,
       );
 
+      it('renders properly', () => {
+        expect(videoPlayer).toMatchSnapshot();
+      });
+
       it('should render preview image when the delay not expired', () => {
         act(() => {
           jest.advanceTimersByTime(500);
         });
         videoPlayer.update();
 
-        expect(videoPlayer).toMatchSnapshot();
         expect(videoPlayer.find('img')).toHaveLength(1);
       });
 
@@ -54,7 +57,6 @@ describe('VideoPlayer', () => {
         });
         videoPlayer.update();
 
-        expect(videoPlayer).toMatchSnapshot();
         expect(videoPlayer.find('img')).toHaveLength(0);
       });
     });

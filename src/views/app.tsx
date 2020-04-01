@@ -9,8 +9,7 @@ import { movies } from '../mocks/movies';
 
 const App = () => (
   <>
-    {/*<Home movies={movies} />*/}
-    <Movie />
+    <Home movies={movies} />
   </>
 );
 
