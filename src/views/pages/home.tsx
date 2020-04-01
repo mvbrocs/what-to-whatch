@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IMovie } from 'mocks/movies';
-import { MovieCard } from 'views/components/movie-card';
+import { MovieList } from 'views/components/movie-list';
 
 type HomeProps = {
   movies: IMovie[];
@@ -126,11 +126,7 @@ export const Home = ({ movies }: HomeProps) => (
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {movies.map((movie) => (
-            <MovieCard {...movie} key={movie.id} />
-          ))}
-        </div>
+        <MovieList movies={movies} />
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">

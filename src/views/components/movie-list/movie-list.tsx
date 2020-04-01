@@ -1,0 +1,16 @@
+import React from 'react';
+
+import { MovieCard } from 'views/components/movie-card';
+import { IMovie } from 'mocks/movies';
+
+type MovieListProps = {
+  movies: IMovie[];
+};
+
+export const MovieList = ({ movies }: MovieListProps) => (
+  <div className="catalog__movies-list">
+    {movies.map((movie) => (
+      <MovieCard {...movie} key={movie.id} />
+    ))}
+  </div>
+);
