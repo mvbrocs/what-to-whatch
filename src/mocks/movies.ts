@@ -7,6 +7,7 @@ import img5 from './img/we-need-to-talk-about-kevin.jpg';
 export interface IMovie {
   id: string;
   title: string;
+  genre: string;
   img: {
     src: string;
     alt: string;
@@ -20,6 +21,7 @@ export const movies: IMovie[] = [
   {
     id: 'movie-1',
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
+    genre: 'Fantastic',
     img: {
       src: img1,
       alt: 'Fantastic Beasts: The Crimes of Grindelwald',
@@ -32,6 +34,7 @@ export const movies: IMovie[] = [
   {
     id: 'movie-2',
     title: 'Bohemian Rhapsody',
+    genre: 'Dramas',
     img: {
       src: img2,
       alt: 'Bohemian Rhapsody',
@@ -44,6 +47,7 @@ export const movies: IMovie[] = [
   {
     id: 'movie-3',
     title: 'Macbeth',
+    genre: 'Comedy',
     img: {
       src: img3,
       alt: 'Macbeth',
@@ -56,6 +60,7 @@ export const movies: IMovie[] = [
   {
     id: 'movie-4',
     title: 'Aviator',
+    genre: 'Horror',
     img: {
       src: img4,
       alt: 'Aviator',
@@ -68,6 +73,7 @@ export const movies: IMovie[] = [
   {
     id: 'movie-5',
     title: 'What We Do in the Shadows',
+    genre: 'Crime',
     img: {
       src: img5,
       alt: 'What We Do in the Shadows',
