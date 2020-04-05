@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { TabPane, Tabs } from 'views/components/tabs';
-import { MovieList } from 'views/components/movie-list';
+import { TabPane, Tabs } from 'views/components/tabs/tabs';
+import { MovieList } from 'views/components/movie-list/movie-list';
 import { movies } from 'mocks/movies';
 
 export const Movie = () => (

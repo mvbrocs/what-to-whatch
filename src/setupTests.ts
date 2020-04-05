@@ -6,6 +6,8 @@ import '@testing-library/jest-dom/extend-expect';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
+// https://github.com/jsdom/jsdom/issues/2155#issuecomment-366703395
 window.HTMLMediaElement.prototype.play = () => new Promise(() => {});
+window.HTMLMediaElement.prototype.pause = () => {};
 
 configure({ adapter: new Adapter() });

@@ -8,7 +8,7 @@ const selectMoviesSlice = (state: RootState) => state.movies;
 const { selectAll: selectAllMovies } = moviesSlice.adapter.getSelectors(selectMoviesSlice);
 
 export const moviesSelectors = {
-  selectAllMovies,
+  selectMoviesSlice,
   selectMoviesByGenre: createSelector(selectAllMovies, selectGenre, (movies, genre) =>
     genre === ALL_GENRES ? movies : movies.filter((movie) => movie.genre === genre),
   ),

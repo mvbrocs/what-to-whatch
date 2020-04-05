@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MovieCard } from 'views/components/movie-card';
+import { MovieCard } from 'views/components/movie-card/movie-card';
 import { IMovie } from 'mocks/movies';
 
 type MovieListProps = {

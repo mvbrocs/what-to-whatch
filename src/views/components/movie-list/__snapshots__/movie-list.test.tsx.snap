@@ -5,6 +5,7 @@ exports[`MovieList renders properly 1`] = `
   className="catalog__movies-list"
 >
   <MovieCard
+    genre="Fantastic"
     id="movie-1"
     img={
       Object {
@@ -19,6 +20,7 @@ exports[`MovieList renders properly 1`] = `
     videoSrc="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
   />
   <MovieCard
+    genre="Dramas"
     id="movie-2"
     img={
       Object {
@@ -33,6 +35,7 @@ exports[`MovieList renders properly 1`] = `
     videoSrc="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
   />
   <MovieCard
+    genre="Comedy"
     id="movie-3"
     img={
       Object {
@@ -47,6 +50,7 @@ exports[`MovieList renders properly 1`] = `
     videoSrc="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
   />
   <MovieCard
+    genre="Horror"
     id="movie-4"
     img={
       Object {
@@ -61,6 +65,7 @@ exports[`MovieList renders properly 1`] = `
     videoSrc="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
   />
   <MovieCard
+    genre="Crime"
     id="movie-5"
     img={
       Object {

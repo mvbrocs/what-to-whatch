@@ -1,0 +1,37 @@
+import React from 'react';
+import { mount } from 'enzyme';
+
+import { GenresList } from './';
+
+describe('GenresList', () => {
+  const mockGenreClick = jest.fn();
+  const props = {
+    genres: ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4'],
+    activeGenre: 'Genre 2',
+    onGenreClick: () => mockGenreClick,
+  };
+  const genresList = mount(<GenresList {...props} />);
+
+  it('renders properly', () => {
+    expect(genresList).toMatchSnapshot();
+  });
+
+  it('should render active class on item 2', () => {
+    expect(
+      genresList
+        .find('.catalog__genres-item')
+        .at(1)
+        .prop('className'),
+    ).toEqual('catalog__genres-item catalog__genres-item--active');
+  });
+
+  it('call onClick handler on link click', () => {
+    const fourthItem = genresList.find('.catalog__genres-item').at(3);
+
+    fourthItem.find('.catalog__genres-link').simulate('click', {
+      preventDefault: () => {},
+    });
+
+    expect(mockGenreClick).toBeCalledTimes(1);
+  });
+});

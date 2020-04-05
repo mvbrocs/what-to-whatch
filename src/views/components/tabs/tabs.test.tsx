@@ -1,10 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
-import { Tabs, TabPane } from './';
+import { Tabs } from './';
+import { TabPane } from './';
 
 describe('Tabs', () => {
-  const tabs = shallow(
+  const tabs = mount(
     <Tabs>
       <TabPane tab="Tab 1" index="1">
         Tab content 1

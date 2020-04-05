@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { VideoPlayer } from 'views/components/video-player';
+import { VideoPlayer } from 'views/components/video-player/video-player';
 import { IMovie } from 'mocks/movies';
+import { useMovieCard } from './use-movie-card';
 
 type MovieCardProps = IMovie;
 
 const VIDEO_MS_DELAY = 1000;
 
 export const MovieCard = ({ title, img, videoSrc }: MovieCardProps) => {
-  const [mouseEnter, setMouseEnter] = useState(false);
-  const cardMouseEnterHandler = () => setMouseEnter(true);
-  const cardMouseLeaveHandler = () => setMouseEnter(false);
+  const { mouseEnter, cardMouseEnterHandler, cardMouseLeaveHandler } = useMovieCard();
 
   return (
     <article

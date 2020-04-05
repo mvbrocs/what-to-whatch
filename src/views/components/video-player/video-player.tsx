@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { useVideoPlayer } from './use-video-player';
 
@@ -15,8 +15,7 @@ type VideoPlayerProps = {
 };
 
 export const VideoPlayer = ({ play, src, poster, delay }: VideoPlayerProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const { start } = useVideoPlayer({ play, videoElement: videoRef.current, delay });
+  const { start, videoRef } = useVideoPlayer({ play, delay });
 
   return (
     <>

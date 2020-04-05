@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
-import { VideoPlayer } from './';
+import { VideoPlayer } from 'views/components/video-player/video-player';
 import { videoPlayerAssetsMock } from 'mocks/video-player';
 
 describe('VideoPlayer', () => {

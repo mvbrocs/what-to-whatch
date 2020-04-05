@@ -1,33 +1,32 @@
-import React, { useState, MouseEvent as ReactMouseEvent } from 'react';
-import classNames from 'classnames';
+import React from 'react';
+
+import { Tab } from './tab';
+import { useTabs } from './use-tabs';
 
 type TabsProps = {
   children: JSX.Element[];
 };
 
 export const Tabs = ({ children }: TabsProps) => {
-  const [activeIndex, setActiveIndex] = useState(children[0].props.index);
-  const tabLinkClickHandler = (index: string) => (event: ReactMouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    setActiveIndex(index);
-  };
-  const tabs = children.map(({ props }) => (
-    <li
-      className={classNames('movie-nav__item', {
-        'movie-nav__item--active': props.index === activeIndex,
-      })}
-      key={props.index}
-    >
-      <a href="#" className="movie-nav__link" onClick={tabLinkClickHandler(props.index)}>
-        {props.tab}
-      </a>
-    </li>
-  ));
-  const panes = children.map((element) => (
-    <div hidden={element.props.index !== activeIndex} key={element.props.index}>
-      {element}
-    </div>
-  ));
+  const { activeIndex, tabClickHandler } = useTabs(children[0].props.index);
+  const tabs = children.map(({ props }) => {
+    const { index, tab } = props;
+
+    return (
+      <Tab active={activeIndex === index} onClick={tabClickHandler(index)} key={index}>
+        {tab}
+      </Tab>
+    );
+  });
+  const panes = children.map((element) => {
+    const { index } = element.props;
+
+    return (
+      <div hidden={index !== activeIndex} key={index}>
+        {element}
+      </div>
+    );
+  });
 
   return (
     <>
