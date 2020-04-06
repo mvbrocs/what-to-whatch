@@ -5,7 +5,15 @@ import { GenresList } from 'views/components/genres-list';
 import { useHome } from './use-home';
 
 export const Home = () => {
-  const { genres, activeGenre, genreClickHandler, movies, moviesLoaded } = useHome();
+  const {
+    genres,
+    activeGenre,
+    genreClickHandler,
+    movies,
+    moviesLoaded,
+    allMoviesIsVisible,
+    btnShowMoreClickHandler,
+  } = useHome();
 
   return (
     <>
@@ -85,10 +93,11 @@ export const Home = () => {
           )}
 
           <div className="catalog__more">
-            {/*if visible movies === all movies*/}
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
+            {!allMoviesIsVisible && (
+              <button className="catalog__button" type="button" onClick={btnShowMoreClickHandler}>
+                Show more
+              </button>
+            )}
           </div>
         </section>
 

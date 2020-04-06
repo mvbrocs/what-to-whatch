@@ -1,4 +1,11 @@
-import { createEntityAdapter, createSlice, EntityState, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createEntityAdapter,
+  createSlice,
+  createAsyncThunk,
+  EntityState,
+  PayloadAction,
+  CaseReducer,
+} from '@reduxjs/toolkit';
 
 import { mockMoviesAPI } from 'mocks/api/mock-movies-api';
 import { IMovie } from 'mocks/mock-movies';
@@ -15,6 +22,13 @@ export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
   return data;
 });
 
+const incrementMaxVisibleMovies: CaseReducer<SliceState, PayloadAction<number>> = (
+  state,
+  action,
+) => {
+  state.maxVisible += action.payload;
+};
+
 export const initialState = {
   loaded: false,
   loading: false,
@@ -26,7 +40,9 @@ export const moviesAdapter = createEntityAdapter<IMovie>();
 export const moviesSlice = createSlice({
   name: 'movies',
   initialState: moviesAdapter.getInitialState(initialState),
-  reducers: {},
+  reducers: {
+    incrementMaxVisibleMovies,
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.pending, (state: SliceState) => {
       state.loaded = false;

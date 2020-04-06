@@ -4,7 +4,7 @@ import { moviesReducer } from './';
 import { initialState, moviesAdapter } from './movies-slice';
 import { mockMovies } from 'mocks/mock-movies';
 
-describe('Movies slice', () => {
+describe('Movies reducer', () => {
   const initialStateSlice = moviesAdapter.getInitialState(initialState);
   const pendingState = createNextState(initialStateSlice, (draft) => {
     draft.loading = true;
@@ -21,40 +21,52 @@ describe('Movies slice', () => {
     draft.error = 'Some error';
   });
 
-  describe('actions', () => {});
+  test('bad action', () => {
+    expect(moviesReducer(undefined, { type: 'badAction' })).toEqual(initialStateSlice);
+  });
 
-  describe('reducer', () => {
-    it('should return initial state', () => {
-      expect(moviesReducer(undefined, { type: 'badAction' })).toEqual(initialStateSlice);
-    });
-
-    describe('movies/getAll/pending', () => {
+  describe('movies/getAll', () => {
+    describe('pending', () => {
       const pendingAction = {
         type: 'movies/getAll/pending',
       };
 
-      it('should return correct state', () => {
+      test('default', () => {
         expect(moviesReducer(undefined, pendingAction)).toEqual(pendingState);
       });
 
-      it('should return correct state, with error', () => {
+      test('with error', () => {
         expect(moviesReducer(rejectedState, pendingAction)).toEqual(pendingState);
       });
 
-      it('should return correct state, with entities', () => {
+      test('with entities', () => {
         expect(moviesReducer(fulfilledState, pendingAction)).toEqual(pendingState);
       });
     });
 
-    describe('movies/getAll/fulfilled', () => {
+    test('fulfilled', () => {
       const fulfilledAction = {
         type: 'movies/getAll/fulfilled',
         payload: [mockMovies[0], mockMovies[1]],
       };
 
-      it('should return correct state', () => {
-        expect(moviesReducer(pendingState, fulfilledAction)).toEqual(fulfilledState);
-      });
+      expect(moviesReducer(pendingState, fulfilledAction)).toEqual(fulfilledState);
     });
+  });
+
+  test('movies/incrementMaxVisibleMovies', () => {
+    const testedState = createNextState(initialStateSlice, (draft) => {
+      draft.maxVisible = 3;
+    });
+    const incrementValue = 11;
+    const action = {
+      type: 'movies/incrementMaxVisibleMovies',
+      payload: incrementValue,
+    };
+    const expectedState = createNextState(testedState, (draft) => {
+      draft.maxVisible += incrementValue;
+    });
+
+    expect(moviesReducer(testedState, action)).toEqual(expectedState);
   });
 });

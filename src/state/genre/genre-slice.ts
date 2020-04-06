@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction, CaseReducer } from '@reduxjs/toolkit';
-import { RootState } from '../root-reducer';
 
 const setGenre: CaseReducer<string, PayloadAction<string>> = (state, action) => action.payload;
 
