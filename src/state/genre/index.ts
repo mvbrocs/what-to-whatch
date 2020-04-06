@@ -1,7 +1,5 @@
 import { genreSlice } from './genre-slice';
-import { RootState } from 'state/root-reducer';
 
-export const { ALL_GENRES } = genreSlice;
-export const { setGenre } = genreSlice.slice.actions;
-export const genreReducer = genreSlice.slice.reducer;
-export const selectGenre = (state: RootState) => state.genre;
+export { ALL_GENRES, selectGenre } from './genre-slice';
+export const { setGenre } = genreSlice.actions;
+export const genreReducer = genreSlice.reducer;

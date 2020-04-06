@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Home } from './pages/home/home';
-import { Movie } from './pages/movie/movie';
+import { Home } from './pages/home';
+import { Movie } from './pages/movie';
 
 export const App = () => (
   <>
-    <Home />
+    <Movie />
   </>
 );

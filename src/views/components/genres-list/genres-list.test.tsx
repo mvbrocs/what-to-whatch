@@ -4,11 +4,11 @@ import { mount } from 'enzyme';
 import { GenresList } from './';
 
 describe('GenresList', () => {
-  const mockGenreClick = jest.fn();
+  const mockOnGenreClick = jest.fn();
   const props = {
     genres: ['Genre 1', 'Genre 2', 'Genre 3', 'Genre 4'],
     activeGenre: 'Genre 2',
-    onGenreClick: () => mockGenreClick,
+    onGenreClick: () => mockOnGenreClick,
   };
   const genresList = mount(<GenresList {...props} />);
 
@@ -21,17 +21,17 @@ describe('GenresList', () => {
       genresList
         .find('.catalog__genres-item')
         .at(1)
-        .prop('className'),
-    ).toEqual('catalog__genres-item catalog__genres-item--active');
+        .hasClass('catalog__genres-item--active'),
+    ).toBeTruthy();
   });
 
-  it('call onClick handler on link click', () => {
+  it('should call onClick handler on link click', () => {
     const fourthItem = genresList.find('.catalog__genres-item').at(3);
 
     fourthItem.find('.catalog__genres-link').simulate('click', {
       preventDefault: () => {},
     });
 
-    expect(mockGenreClick).toBeCalledTimes(1);
+    expect(mockOnGenreClick).toBeCalledTimes(1);
   });
 });

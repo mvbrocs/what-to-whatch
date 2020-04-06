@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction, CaseReducer } from '@reduxjs/toolkit';
+import { RootState } from '../root-reducer';
 
 const setGenre: CaseReducer<string, PayloadAction<string>> = (state, action) => action.payload;
 
-const ALL_GENRES = 'All genres';
+export const ALL_GENRES = 'All genres';
 
-export const genreSlice = {
-  ALL_GENRES,
-  slice: createSlice({
-    name: 'genre',
-    initialState: ALL_GENRES,
-    reducers: {
-      setGenre,
-    },
-  }),
-};
+export const genreSlice = createSlice({
+  name: 'genre',
+  initialState: ALL_GENRES,
+  reducers: {
+    setGenre,
+  },
+});
+
+export const selectGenre = (state: RootState) => state.genre;

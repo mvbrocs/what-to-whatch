@@ -30,14 +30,14 @@ describe('Tabs', () => {
       tabs
         .find('.movie-nav__item')
         .at(0)
-        .prop('className'),
-    ).toEqual('movie-nav__item');
+        .hasClass('movie-nav__item--active'),
+    ).toBeFalsy();
     expect(
       tabs
         .find('.movie-nav__item')
         .at(1)
-        .prop('className'),
-    ).toEqual('movie-nav__item movie-nav__item--active');
+        .hasClass('movie-nav__item--active'),
+    ).toBeTruthy();
     expect(
       tabs
         .find('[index="1"]')
