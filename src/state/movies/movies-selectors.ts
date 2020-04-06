@@ -6,7 +6,7 @@ import { moviesAdapter } from './movies-slice';
 
 export const selectMoviesSlice = (state: RootState) => state.movies;
 
-const { selectAll: selectAllMovies } = moviesAdapter.getSelectors(selectMoviesSlice);
+export const { selectAll: selectAllMovies } = moviesAdapter.getSelectors(selectMoviesSlice);
 
 export const selectMoviesByGenre = createSelector(selectAllMovies, selectGenre, (movies, genre) =>
   genre === ALL_GENRES ? movies : movies.filter((movie) => movie.genre === genre),
@@ -19,3 +19,20 @@ export const selectAllGenres = createSelector(selectAllMovies, (movies) => {
 
   return genres;
 });
+
+export const selectMaxVisibleMovies = createSelector(
+  selectMoviesSlice,
+  ({ maxVisibleMovies }) => maxVisibleMovies,
+);
+
+export const selectMoviesByGenreAndMaxVisible = createSelector(
+  selectMoviesByGenre,
+  selectMaxVisibleMovies,
+  (movies, maxVisibleMovies) => (maxVisibleMovies > 0 ? movies.slice(0, maxVisibleMovies) : []),
+);
+
+export const selectAllMoviesIsVisible = createSelector(
+  selectMoviesByGenre,
+  selectMaxVisibleMovies,
+  (movies, maxVisibleMovies) => maxVisibleMovies >= movies.length,
+);

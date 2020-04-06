@@ -7,6 +7,7 @@ type SliceState = {
   loaded: boolean;
   loading: boolean;
   error: string | null;
+  maxVisibleMovies: number;
 } & EntityState<IMovie>;
 
 export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
@@ -18,6 +19,7 @@ export const initialState = {
   loaded: false,
   loading: false,
   error: null,
+  maxVisibleMovies: 8,
 } as SliceState;
 
 export const moviesAdapter = createEntityAdapter<IMovie>();

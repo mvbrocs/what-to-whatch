@@ -12,5 +12,3 @@ export const genreSlice = createSlice({
     setGenre,
   },
 });
-
-export const selectGenre = (state: RootState) => state.genre;

@@ -5,6 +5,6 @@ import { Movie } from './pages/movie';
 
 export const App = () => (
   <>
-    <Movie />
+    <Home />
   </>
 );

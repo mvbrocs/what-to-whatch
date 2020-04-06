@@ -85,6 +85,7 @@ export const Home = () => {
           )}
 
           <div className="catalog__more">
+            {/*if visible movies === all movies*/}
             <button className="catalog__button" type="button">
               Show more
             </button>
