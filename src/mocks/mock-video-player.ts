@@ -1,6 +1,6 @@
 import img1 from './img/fantastic-beasts-the-crimes-of-grindelwald.jpg';
 
-export const videoPlayerAssetsMock = {
+export const mockVideoPlayer = {
   src:
     'https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4',
   poster: {

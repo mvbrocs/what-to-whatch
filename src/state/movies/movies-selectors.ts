@@ -22,7 +22,7 @@ export const selectAllGenres = createSelector(selectAllMovies, (movies) => {
 
 export const selectMaxVisibleMovies = createSelector(
   selectMoviesSlice,
-  ({ maxVisibleMovies }) => maxVisibleMovies,
+  ({ maxVisible }) => maxVisible,
 );
 
 export const selectMoviesByGenreAndMaxVisible = createSelector(

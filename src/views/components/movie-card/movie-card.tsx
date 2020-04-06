@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { VideoPlayer } from 'views/components/video-player/video-player';
-import { IMovie } from 'mocks/movies';
+import { IMovie } from 'mocks/mock-movies';
 import { useMovieCard } from './use-movie-card';
 
 type MovieCardProps = IMovie;

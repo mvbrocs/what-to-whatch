@@ -1,17 +1,17 @@
 import { createEntityAdapter, createSlice, EntityState, createAsyncThunk } from '@reduxjs/toolkit';
 
-import { moviesAPI } from 'mocks/api/movies';
-import { IMovie } from 'mocks/movies';
+import { mockMoviesAPI } from 'mocks/api/mock-movies-api';
+import { IMovie } from 'mocks/mock-movies';
 
 type SliceState = {
   loaded: boolean;
   loading: boolean;
   error: string | null;
-  maxVisibleMovies: number;
+  maxVisible: number;
 } & EntityState<IMovie>;
 
 export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
-  const { data } = await moviesAPI.getAll();
+  const { data } = await mockMoviesAPI.getAll();
   return data;
 });
 
@@ -19,7 +19,7 @@ export const initialState = {
   loaded: false,
   loading: false,
   error: null,
-  maxVisibleMovies: 8,
+  maxVisible: 8,
 } as SliceState;
 
 export const moviesAdapter = createEntityAdapter<IMovie>();

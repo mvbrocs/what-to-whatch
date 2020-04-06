@@ -2,7 +2,7 @@ import { createNextState } from '@reduxjs/toolkit';
 
 import { moviesReducer } from './';
 import { initialState, moviesAdapter } from './movies-slice';
-import { movies } from 'mocks/movies';
+import { mockMovies } from 'mocks/mock-movies';
 
 describe('Movies slice', () => {
   const initialStateSlice = moviesAdapter.getInitialState(initialState);
@@ -11,10 +11,10 @@ describe('Movies slice', () => {
   });
   const fulfilledState = createNextState(initialStateSlice, (draft) => {
     draft.loaded = true;
-    draft.ids = [movies[0].id, movies[1].id];
+    draft.ids = [mockMovies[0].id, mockMovies[1].id];
     draft.entities = {
-      [movies[0].id]: movies[0],
-      [movies[1].id]: movies[1],
+      [mockMovies[0].id]: mockMovies[0],
+      [mockMovies[1].id]: mockMovies[1],
     };
   });
   const rejectedState = createNextState(initialStateSlice, (draft) => {
@@ -49,7 +49,7 @@ describe('Movies slice', () => {
     describe('movies/getAll/fulfilled', () => {
       const fulfilledAction = {
         type: 'movies/getAll/fulfilled',
-        payload: [movies[0], movies[1]],
+        payload: [mockMovies[0], mockMovies[1]],
       };
 
       it('should return correct state', () => {

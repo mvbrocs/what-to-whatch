@@ -10,8 +10,8 @@ import {
   selectAllMoviesIsVisible,
 } from './movies-selectors';
 import { ALL_GENRES } from 'state/genre';
-import { store } from 'mocks/store';
-import { movies } from 'mocks/movies';
+import { mockStore } from 'mocks/mock-store';
+import { mockMovies } from 'mocks/mock-movies';
 
 describe('Movies selectors', () => {
   const moviesInitialState = {
@@ -20,26 +20,26 @@ describe('Movies selectors', () => {
     error: null,
     ids: [],
     entities: {},
-    maxVisibleMovies: 8,
+    maxVisible: 8,
   };
   const genre1 = 'Genre 1';
   const genre2 = 'Genre 2';
-  const movie1 = createNextState(movies[0], (draft) => {
+  const movie1 = createNextState(mockMovies[0], (draft) => {
     draft.genre = genre1;
   });
-  const movie2 = createNextState(movies[1], (draft) => {
+  const movie2 = createNextState(mockMovies[1], (draft) => {
     draft.genre = genre2;
   });
-  const movie3 = createNextState(movies[2], (draft) => {
+  const movie3 = createNextState(mockMovies[2], (draft) => {
     draft.genre = genre1;
   });
-  const movie4 = createNextState(movies[3], (draft) => {
+  const movie4 = createNextState(mockMovies[3], (draft) => {
     draft.genre = genre2;
   });
-  const movie5 = createNextState(movies[4], (draft) => {
+  const movie5 = createNextState(mockMovies[4], (draft) => {
     draft.genre = genre2;
   });
-  const initialStore = createNextState(store, (draft) => {
+  const initialStore = createNextState(mockStore, (draft) => {
     draft.movies = moviesInitialState;
   });
   const storeWithMovies = createNextState(initialStore, (draft) => {
@@ -115,7 +115,7 @@ describe('Movies selectors', () => {
   it('selectMaxVisibleMovies', () => {
     const max = 10;
     const testedStore = createNextState(initialStore, (draft) => {
-      draft.movies.maxVisibleMovies = max;
+      draft.movies.maxVisible = max;
     });
 
     expect(selectMaxVisibleMovies(testedStore)).toEqual(max);
@@ -128,7 +128,7 @@ describe('Movies selectors', () => {
 
     it('max -1', () => {
       const testedStoreMaxMinusOne = createNextState(testedStoreAllGenres, (draft) => {
-        draft.movies.maxVisibleMovies = -1;
+        draft.movies.maxVisible = -1;
       });
 
       expect(selectMoviesByGenreAndMaxVisible(testedStoreMaxMinusOne)).toEqual([]);
@@ -136,7 +136,7 @@ describe('Movies selectors', () => {
 
     it('max -10', () => {
       const testedStoreMaxMinusTen = createNextState(testedStoreAllGenres, (draft) => {
-        draft.movies.maxVisibleMovies = -10;
+        draft.movies.maxVisible = -10;
       });
 
       expect(selectMoviesByGenreAndMaxVisible(testedStoreMaxMinusTen)).toEqual([]);
@@ -144,7 +144,7 @@ describe('Movies selectors', () => {
 
     it('max 0', () => {
       const testedStoreMaxZero = createNextState(testedStoreAllGenres, (draft) => {
-        draft.movies.maxVisibleMovies = 0;
+        draft.movies.maxVisible = 0;
       });
 
       expect(selectMoviesByGenreAndMaxVisible(testedStoreMaxZero)).toEqual([]);
@@ -152,7 +152,7 @@ describe('Movies selectors', () => {
 
     it('max 2', () => {
       const testedStoreMaxThree = createNextState(testedStoreAllGenres, (draft) => {
-        draft.movies.maxVisibleMovies = 2;
+        draft.movies.maxVisible = 2;
       });
 
       expect(selectMoviesByGenreAndMaxVisible(testedStoreMaxThree)).toEqual([movie1, movie2]);
@@ -160,7 +160,7 @@ describe('Movies selectors', () => {
 
     it('max 4', () => {
       const testedStoreMaxFour = createNextState(testedStoreAllGenres, (draft) => {
-        draft.movies.maxVisibleMovies = 4;
+        draft.movies.maxVisible = 4;
       });
 
       expect(selectMoviesByGenreAndMaxVisible(testedStoreMaxFour)).toEqual([
@@ -173,7 +173,7 @@ describe('Movies selectors', () => {
 
     it('max 1000', () => {
       const testedStoreMaxOneThousand = createNextState(testedStoreAllGenres, (draft) => {
-        draft.movies.maxVisibleMovies = 1000;
+        draft.movies.maxVisible = 1000;
       });
 
       expect(selectMoviesByGenreAndMaxVisible(testedStoreMaxOneThousand)).toEqual([
@@ -189,7 +189,7 @@ describe('Movies selectors', () => {
   describe('selectAllMoviesIsVisible', () => {
     test('maxVisible negative', () => {
       const testedStore = createNextState(storeWithMovies, (draft) => {
-        draft.movies.maxVisibleMovies = -1;
+        draft.movies.maxVisible = -1;
       });
 
       expect(selectAllMoviesIsVisible(testedStore)).toBeFalsy();
@@ -197,7 +197,7 @@ describe('Movies selectors', () => {
 
     test('maxVisible less movies', () => {
       const testedStore = createNextState(storeWithMovies, (draft) => {
-        draft.movies.maxVisibleMovies = draft.movies.ids.length - 1;
+        draft.movies.maxVisible = draft.movies.ids.length - 1;
       });
 
       expect(selectAllMoviesIsVisible(testedStore)).toBeFalsy();
@@ -205,7 +205,7 @@ describe('Movies selectors', () => {
 
     test('maxVisible equal movies', () => {
       const testedStore = createNextState(storeWithMovies, (draft) => {
-        draft.movies.maxVisibleMovies = draft.movies.ids.length;
+        draft.movies.maxVisible = draft.movies.ids.length;
       });
 
       expect(selectAllMoviesIsVisible(testedStore)).toBeTruthy();
@@ -213,7 +213,7 @@ describe('Movies selectors', () => {
 
     test('maxVisible greater movies', () => {
       const testedStore = createNextState(storeWithMovies, (draft) => {
-        draft.movies.maxVisibleMovies = draft.movies.ids.length + 1000;
+        draft.movies.maxVisible = draft.movies.ids.length + 1000;
       });
 
       expect(selectAllMoviesIsVisible(testedStore)).toBeTruthy();

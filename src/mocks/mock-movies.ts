@@ -17,7 +17,7 @@ export interface IMovie {
   videoSrc: string;
 }
 
-export const movies: IMovie[] = [
+export const mockMovies: IMovie[] = [
   {
     id: 'movie-1',
     title: 'Fantastic Beasts: The Crimes of Grindelwald',

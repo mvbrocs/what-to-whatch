@@ -1,11 +1,11 @@
 import { createNextState } from '@reduxjs/toolkit';
 
-import { store } from 'mocks/store';
+import { mockStore } from 'mocks/mock-store';
 import { selectGenre } from './';
 
 describe('Genre selectors', () => {
   const genre = 'Genre 2';
-  const testStore = createNextState(store, (draft) => {
+  const testStore = createNextState(mockStore, (draft) => {
     draft.genre = genre;
   });
 

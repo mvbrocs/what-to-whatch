@@ -2,10 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { MovieCard } from './movie-card';
-import { movieCardMock } from 'mocks/movie-card';
+import { mockMovieCard } from 'mocks/mock-movie-card';
 
 describe('MovieCard', () => {
-  const movieCard = shallow(<MovieCard {...movieCardMock} />);
+  const movieCard = shallow(<MovieCard {...mockMovieCard} />);
 
   it('renders properly', () => {
     expect(movieCard).toMatchSnapshot();
