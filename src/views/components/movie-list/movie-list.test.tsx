@@ -2,10 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { MovieList } from './movie-list';
-import { mockMovies } from 'mocks/mock-movies';
+import { mockFilms } from 'mocks/films';
 
 describe('MovieList', () => {
-  const movieList = shallow(<MovieList movies={mockMovies} />);
+  const movieList = shallow(<MovieList movies={mockFilms} />);
 
   it('renders properly', () => {
     expect(movieList).toMatchSnapshot();

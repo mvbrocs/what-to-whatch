@@ -8,14 +8,14 @@ import {
 } from '@reduxjs/toolkit';
 
 import { mockMoviesAPI } from 'mocks/api/mock-movies-api';
-import { IMovie } from 'mocks/mock-movies';
+import { IFilm } from 'api/films';
 
 type SliceState = {
   loaded: boolean;
   loading: boolean;
   error: string | null;
   maxVisible: number;
-} & EntityState<IMovie>;
+} & EntityState<IFilm>;
 
 export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
   const { data } = await mockMoviesAPI.getAll();
@@ -29,17 +29,17 @@ const incrementMaxVisibleMovies: CaseReducer<SliceState, PayloadAction<number>> 
   state.maxVisible += action.payload;
 };
 
-export const initialState = {
+export const moviesInitialState = {
   loaded: false,
   loading: false,
   error: null,
   maxVisible: 8,
 } as SliceState;
 
-export const moviesAdapter = createEntityAdapter<IMovie>();
+export const moviesAdapter = createEntityAdapter<IFilm>();
 export const moviesSlice = createSlice({
   name: 'movies',
-  initialState: moviesAdapter.getInitialState(initialState),
+  initialState: moviesAdapter.getInitialState(moviesInitialState),
   reducers: {
     incrementMaxVisibleMovies,
   },

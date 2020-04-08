@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { MovieCard } from 'views/components/movie-card/movie-card';
-import { IMovie } from 'mocks/mock-movies';
+import { MovieCard } from 'views/components/movie-card';
+import { IFilm } from 'api/films';
 
 type MovieListProps = {
-  movies: IMovie[];
+  movies: IFilm[];
 };
 
 export const MovieList = ({ movies }: MovieListProps) => (

@@ -1,20 +1,20 @@
 import { createNextState } from '@reduxjs/toolkit';
 
 import { moviesReducer } from './';
-import { initialState, moviesAdapter } from './movies-slice';
-import { mockMovies } from 'mocks/mock-movies';
+import { moviesInitialState, moviesAdapter } from './movies-slice';
+import { mockFilms } from 'mocks/films';
 
 describe('Movies reducer', () => {
-  const initialStateSlice = moviesAdapter.getInitialState(initialState);
+  const initialStateSlice = moviesAdapter.getInitialState(moviesInitialState);
   const pendingState = createNextState(initialStateSlice, (draft) => {
     draft.loading = true;
   });
   const fulfilledState = createNextState(initialStateSlice, (draft) => {
     draft.loaded = true;
-    draft.ids = [mockMovies[0].id, mockMovies[1].id];
+    draft.ids = [mockFilms[0].id, mockFilms[1].id];
     draft.entities = {
-      [mockMovies[0].id]: mockMovies[0],
-      [mockMovies[1].id]: mockMovies[1],
+      [mockFilms[0].id]: mockFilms[0],
+      [mockFilms[1].id]: mockFilms[1],
     };
   });
   const rejectedState = createNextState(initialStateSlice, (draft) => {
@@ -47,7 +47,7 @@ describe('Movies reducer', () => {
     test('fulfilled', () => {
       const fulfilledAction = {
         type: 'movies/getAll/fulfilled',
-        payload: [mockMovies[0], mockMovies[1]],
+        payload: [mockFilms[0], mockFilms[1]],
       };
 
       expect(moviesReducer(pendingState, fulfilledAction)).toEqual(fulfilledState);

@@ -2,10 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { MovieCard } from './movie-card';
-import { mockMovieCard } from 'mocks/mock-movie-card';
+import { mockFilms } from 'mocks/films';
 
 describe('MovieCard', () => {
-  const movieCard = shallow(<MovieCard {...mockMovieCard} />);
+  const props = {
+    name: mockFilms[0].name,
+    preview_image: mockFilms[0].preview_image,
+    preview_video_link: mockFilms[0].preview_video_link,
+  };
+  const movieCard = shallow(<MovieCard {...props} />);
 
   it('renders properly', () => {
     expect(movieCard).toMatchSnapshot();

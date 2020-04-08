@@ -8,10 +8,11 @@ import {
   selectMaxVisibleMovies,
   selectMoviesByGenreAndMaxVisible,
   selectAllMoviesIsVisible,
+  selectMovieByRandom,
 } from './movies-selectors';
 import { ALL_GENRES } from 'state/genre';
-import { mockStore } from 'mocks/mock-store';
-import { mockMovies } from 'mocks/mock-movies';
+import { mockStore } from 'mocks/store';
+import { mockFilms } from 'mocks/films';
 
 describe('Movies selectors', () => {
   const moviesInitialState = {
@@ -24,19 +25,19 @@ describe('Movies selectors', () => {
   };
   const genre1 = 'Genre 1';
   const genre2 = 'Genre 2';
-  const movie1 = createNextState(mockMovies[0], (draft) => {
+  const movie1 = createNextState(mockFilms[0], (draft) => {
     draft.genre = genre1;
   });
-  const movie2 = createNextState(mockMovies[1], (draft) => {
+  const movie2 = createNextState(mockFilms[1], (draft) => {
     draft.genre = genre2;
   });
-  const movie3 = createNextState(mockMovies[2], (draft) => {
+  const movie3 = createNextState(mockFilms[2], (draft) => {
     draft.genre = genre1;
   });
-  const movie4 = createNextState(mockMovies[3], (draft) => {
+  const movie4 = createNextState(mockFilms[3], (draft) => {
     draft.genre = genre2;
   });
-  const movie5 = createNextState(mockMovies[4], (draft) => {
+  const movie5 = createNextState(mockFilms[4], (draft) => {
     draft.genre = genre2;
   });
   const initialStore = createNextState(mockStore, (draft) => {
@@ -217,6 +218,16 @@ describe('Movies selectors', () => {
       });
 
       expect(selectAllMoviesIsVisible(testedStore)).toBeTruthy();
+    });
+  });
+
+  describe('selectMovieByRandom', () => {
+    test('no movies', () => {
+      expect(selectMovieByRandom(initialStore)).toEqual(null);
+    });
+
+    test('movies loaded', () => {
+      expect(typeof selectMovieByRandom(storeWithMovies)?.name).toEqual('string');
     });
   });
 });

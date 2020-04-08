@@ -5,23 +5,23 @@ exports[`VideoPlayer not play renders properly 1`] = `
   play={false}
   poster={
     Object {
-      "alt": "Fantastic Beasts: The Crimes of Grindelwald",
+      "alt": "Orlando",
       "height": 175,
-      "src": "fantastic-beasts-the-crimes-of-grindelwald.jpg",
+      "src": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg",
       "width": 280,
     }
   }
-  src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
 >
   <img
-    alt="Fantastic Beasts: The Crimes of Grindelwald"
+    alt="Orlando"
     height={175}
-    src="fantastic-beasts-the-crimes-of-grindelwald.jpg"
+    src="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg"
     width={280}
   />
   <video
     height={175}
-    src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
     width={280}
   />
 </VideoPlayer>
@@ -33,23 +33,73 @@ exports[`VideoPlayer play with delay renders properly 1`] = `
   play={true}
   poster={
     Object {
-      "alt": "Fantastic Beasts: The Crimes of Grindelwald",
+      "alt": "Orlando",
       "height": 175,
-      "src": "fantastic-beasts-the-crimes-of-grindelwald.jpg",
+      "src": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg",
       "width": 280,
     }
   }
-  src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
 >
   <img
-    alt="Fantastic Beasts: The Crimes of Grindelwald"
+    alt="Orlando"
     height={175}
-    src="fantastic-beasts-the-crimes-of-grindelwald.jpg"
+    src="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg"
     width={280}
   />
   <video
     height={175}
-    src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+    width={280}
+  />
+</VideoPlayer>
+`;
+
+exports[`VideoPlayer play with delay should not render preview image when the delay expired 1`] = `
+<VideoPlayer
+  delay={1000}
+  play={true}
+  poster={
+    Object {
+      "alt": "Orlando",
+      "height": 175,
+      "src": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg",
+      "width": 280,
+    }
+  }
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+>
+  <video
+    height={175}
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+    width={280}
+  />
+</VideoPlayer>
+`;
+
+exports[`VideoPlayer play with delay should render preview image when the delay not expired 1`] = `
+<VideoPlayer
+  delay={1000}
+  play={true}
+  poster={
+    Object {
+      "alt": "Orlando",
+      "height": 175,
+      "src": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg",
+      "width": 280,
+    }
+  }
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+>
+  <img
+    alt="Orlando"
+    height={175}
+    src="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg"
+    width={280}
+  />
+  <video
+    height={175}
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
     width={280}
   />
 </VideoPlayer>
@@ -60,17 +110,17 @@ exports[`VideoPlayer play without delay renders properly 1`] = `
   play={true}
   poster={
     Object {
-      "alt": "Fantastic Beasts: The Crimes of Grindelwald",
+      "alt": "Orlando",
       "height": 175,
-      "src": "fantastic-beasts-the-crimes-of-grindelwald.jpg",
+      "src": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg",
       "width": 280,
     }
   }
-  src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
 >
   <video
     height={175}
-    src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+    src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
     width={280}
   />
 </VideoPlayer>

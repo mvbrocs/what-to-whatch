@@ -6,7 +6,7 @@ import { store } from './state/store';
 import 'assets/style.min.css';
 
 const render = () => {
-  const App = require('./views/app').App;
+  const App = require('views/app').App;
 
   ReactDOM.render(
     <Provider store={store}>
@@ -19,5 +19,5 @@ const render = () => {
 render();
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./views/app', render);
+  module.hot.accept('views/app', render);
 }

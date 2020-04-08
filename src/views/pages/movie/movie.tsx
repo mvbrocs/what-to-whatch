@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TabPane, Tabs } from 'views/components/tabs';
 import { MovieList } from 'views/components/movie-list';
-import { mockMovies } from 'mocks/mock-movies';
+import { mockFilms } from 'mocks/films';
 
 export const Movie = () => (
   <>
@@ -277,7 +277,7 @@ export const Movie = () => (
       <section className="catalog catalog--like-this">
         <h2 className="catalog__title">More like this</h2>
 
-        <MovieList movies={mockMovies} />
+        <MovieList movies={mockFilms} />
       </section>
 
       <footer className="page-footer">

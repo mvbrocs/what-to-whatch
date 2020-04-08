@@ -1,0 +1,64 @@
+import React from 'react';
+
+import { VideoPlayerFullscreenSliceState } from 'state/video-player-fullscreen';
+import { useVideoPlayerFullscreen } from './use-video-player-fullscreen';
+import { VideoPlayerFullscreenPlayHandler } from './';
+
+type VideoPlayerFullscreenProps = {
+  onClose: () => void;
+  onPlay: VideoPlayerFullscreenPlayHandler;
+} & VideoPlayerFullscreenSliceState;
+
+export const VideoPlayerFullscreen = ({
+  visible,
+  background_color,
+  background_image,
+  name,
+  video_link,
+  onClose,
+  onPlay,
+}: VideoPlayerFullscreenProps) => {
+  const { videoRef } = useVideoPlayerFullscreen();
+  const btnPlayClickHandler = () => onPlay(videoRef);
+
+  if (!visible || !video_link || !background_image || !background_color) return null;
+
+  return (
+    <div className="player" style={{ backgroundColor: background_color }}>
+      <video ref={videoRef} src={video_link} className="player__video" poster={background_image} />
+
+      <button type="button" className="player__exit" onClick={onClose}>
+        Exit
+      </button>
+
+      <div className="player__controls">
+        <div className="player__controls-row">
+          <div className="player__time">
+            <progress className="player__progress" value="30" max="100" />
+            <div className="player__toggler" style={{ left: '30%' }}>
+              Toggler
+            </div>
+          </div>
+          <div className="player__time-value">1:30:29</div>
+        </div>
+
+        <div className="player__controls-row">
+          <button type="button" className="player__play" onClick={btnPlayClickHandler}>
+            <svg viewBox="0 0 19 19" width="19" height="19">
+              <use xlinkHref="#play-s" />
+            </svg>
+            <span>Play</span>
+          </button>
+          <div className="player__name">{name}</div>
+
+          <button type="button" className="player__full-screen">
+            <svg viewBox="0 0 27 27" width="27" height="27">
+              <use xlinkHref="#full-screen" />
+            </svg>
+            <span>Full screen</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

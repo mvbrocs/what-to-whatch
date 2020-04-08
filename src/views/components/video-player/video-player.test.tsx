@@ -3,38 +3,39 @@ import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
 import { VideoPlayer } from 'views/components/video-player/video-player';
-import { mockVideoPlayer } from 'mocks/mock-video-player';
+import { mockFilms } from 'mocks/films';
 
 describe('VideoPlayer', () => {
+  const assetsProps = {
+    src: mockFilms[0].preview_video_link,
+    poster: {
+      src: mockFilms[0].preview_image,
+      alt: mockFilms[0].name,
+      width: 280,
+      height: 175,
+    },
+  };
   describe('not play', () => {
-    const videoPlayer = mount(<VideoPlayer {...mockVideoPlayer} play={false} />);
+    const videoPlayer = mount(<VideoPlayer {...assetsProps} play={false} />);
 
     it('renders properly', () => {
       expect(videoPlayer).toMatchSnapshot();
-    });
-
-    it('should render preview image', () => {
-      expect(videoPlayer.find('img')).toHaveLength(1);
     });
   });
 
   describe('play', () => {
     describe('without delay', () => {
-      const videoPlayer = mount(<VideoPlayer {...mockVideoPlayer} play={true} />);
+      const videoPlayer = mount(<VideoPlayer {...assetsProps} play={true} />);
 
       it('renders properly', () => {
         expect(videoPlayer).toMatchSnapshot();
-      });
-
-      it('should not render preview image', () => {
-        expect(videoPlayer.find('img')).toHaveLength(0);
       });
     });
 
     describe('with delay', () => {
       jest.useFakeTimers();
 
-      const videoPlayer = mount(<VideoPlayer {...mockVideoPlayer} play={true} delay={1000} />);
+      const videoPlayer = mount(<VideoPlayer {...assetsProps} play={true} delay={1000} />);
 
       it('renders properly', () => {
         expect(videoPlayer).toMatchSnapshot();
@@ -46,7 +47,7 @@ describe('VideoPlayer', () => {
         });
         videoPlayer.update();
 
-        expect(videoPlayer.find('img')).toHaveLength(1);
+        expect(videoPlayer).toMatchSnapshot();
       });
 
       it('should not render preview image when the delay expired', () => {
@@ -55,7 +56,7 @@ describe('VideoPlayer', () => {
         });
         videoPlayer.update();
 
-        expect(videoPlayer.find('img')).toHaveLength(0);
+        expect(videoPlayer).toMatchSnapshot();
       });
     });
   });

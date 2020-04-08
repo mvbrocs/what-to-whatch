@@ -14,13 +14,13 @@ exports[`MovieCard renders properly 1`] = `
       play={false}
       poster={
         Object {
-          "alt": "Fantastic Beasts: The Crimes of Grindelwald",
+          "alt": "Orlando",
           "height": 175,
-          "src": "fantastic-beasts-the-crimes-of-grindelwald.jpg",
+          "src": "https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/orlando.jpg",
           "width": 280,
         }
       }
-      src="https://st.depositphotos.com/1100827/3666/v/600/depositphotos_36660843-stock-video-girl-leans-back-among-the.mp4"
+      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
     />
   </div>
   <h3
@@ -28,9 +28,9 @@ exports[`MovieCard renders properly 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="movie-page.html"
+      href="/"
     >
-      Fantastic Beasts: The Crimes of Grindelwald
+      Orlando
     </a>
   </h3>
 </article>

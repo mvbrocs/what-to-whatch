@@ -36,3 +36,7 @@ export const selectAllMoviesIsVisible = createSelector(
   selectMaxVisibleMovies,
   (movies, maxVisibleMovies) => maxVisibleMovies >= movies.length,
 );
+
+export const selectMovieByRandom = createSelector(selectAllMovies, (movies) =>
+  movies.length ? movies[Math.floor(Math.random() * movies.length)] : null,
+);
