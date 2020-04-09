@@ -6,7 +6,6 @@ import { mockFilms } from 'mocks/films';
 
 describe('VideoPlayerFullscreen', () => {
   const closeHandlerMock = jest.fn();
-  const playHandlerMock = jest.fn();
   const props = {
     visible: true,
     background_image: mockFilms[0].background_image,
@@ -14,7 +13,6 @@ describe('VideoPlayerFullscreen', () => {
     name: mockFilms[0].name,
     video_link: mockFilms[0].video_link,
     onClose: closeHandlerMock,
-    onPlay: playHandlerMock,
   };
   const videoPlayerFullscreen = shallow(<VideoPlayerFullscreen {...props} />);
 
@@ -27,7 +25,7 @@ describe('VideoPlayerFullscreen', () => {
       <VideoPlayerFullscreen {...props} visible={false} />,
     );
 
-    expect(videoPlayerFullscreenNotVisible).toMatchSnapshot();
+    expect(videoPlayerFullscreenNotVisible.children().length).toBe(0);
   });
 
   test('call close handler on btn exit click', () => {
@@ -36,9 +34,9 @@ describe('VideoPlayerFullscreen', () => {
     expect(closeHandlerMock).toBeCalledTimes(1);
   });
 
-  test('call play handler on btn play click', () => {
-    videoPlayerFullscreen.find('.player__play').simulate('click');
+  test('btn fullscreen', () => {
+    videoPlayerFullscreen.find('.player__full-screen').simulate('click');
 
-    expect(playHandlerMock).toBeCalledTimes(1);
+    expect(videoPlayerFullscreen.find('.player__full-screen').exists()).toBeFalsy();
   });
 });
