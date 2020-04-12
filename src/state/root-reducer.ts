@@ -1,13 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { genreReducer } from './genre';
-import { moviesReducer } from './movies';
-import { videoPlayerFullscreenReducer } from './video-player-fullscreen';
+import { uiReducer } from './ui/slice';
+import { moviesReducer } from './movies/slice';
 
 const rootReducer = combineReducers({
-  genre: genreReducer,
+  ui: uiReducer,
   movies: moviesReducer,
-  videoPlayerFullscreen: videoPlayerFullscreenReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -1,3 +1,5 @@
+import { root } from './root';
+
 export interface IFilm {
   name: string;
   poster_image: string;
@@ -17,3 +19,7 @@ export interface IFilm {
   video_link: string;
   preview_video_link: string;
 }
+
+export const films = {
+  getAll: () => root.get<IFilm[]>('/films'),
+};

@@ -1,8 +1,9 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { RootState } from 'state/root-reducer';
-import { ALL_GENRES, selectGenre } from 'state/genre';
-import { moviesAdapter } from './movies-slice';
+import { ALL_GENRES } from 'state/ui/slice';
+import { selectGenre, selectMaxVisibleMovies } from 'state/ui/selectors';
+import { moviesAdapter } from './slice';
 
 export const selectMoviesSlice = (state: RootState) => state.movies;
 
@@ -19,11 +20,6 @@ export const selectAllGenres = createSelector(selectAllMovies, (movies) => {
 
   return genres;
 });
-
-export const selectMaxVisibleMovies = createSelector(
-  selectMoviesSlice,
-  ({ maxVisible }) => maxVisible,
-);
 
 export const selectMoviesByGenreAndMaxVisible = createSelector(
   selectMoviesByGenre,

@@ -25,11 +25,14 @@ export const useHome = () => {
   const { loaded: moviesLoaded, loading: moviesLoading } = useSelector(selectMoviesSlice);
   const mainMovie = useSelector(selectMovieByRandom);
   const dispatch = useDispatch();
+
   const genreClickHandler: GenreClickHandler = (genre) => (event) => {
     event.preventDefault();
     dispatch(setGenre(genre));
   };
+
   const btnShowMoreClickHandler = () => dispatch(incrementMaxVisibleMovies(20));
+
   const btnPlayClickHandler = () => {
     dispatch(toggleVideoPlayerFullscreenVisible());
 

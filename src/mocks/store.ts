@@ -1,9 +1,8 @@
 import { RootState } from 'state/root-reducer';
-import { moviesInitialState } from 'state/movies';
-import { videoPlayerFullscreenInitialState } from 'state/video-player-fullscreen';
+import { moviesAdapter, moviesInitialState } from 'state/movies/slice';
+import { uiInitialState } from 'state/ui/slice';
 
 export const mockStore: RootState = {
-  genre: 'Some genre',
-  movies: moviesInitialState,
-  videoPlayerFullscreen: videoPlayerFullscreenInitialState,
+  ui: uiInitialState,
+  movies: moviesAdapter.getInitialState(moviesInitialState),
 };

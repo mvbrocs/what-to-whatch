@@ -1,7 +1,7 @@
 import { createNextState } from '@reduxjs/toolkit';
 
-import { moviesReducer } from './';
-import { moviesInitialState, moviesAdapter } from './movies-slice';
+import { moviesReducer } from './slice';
+import { moviesInitialState, moviesAdapter } from './slice';
 import { mockFilms } from 'mocks/films';
 
 describe('Movies reducer', () => {
@@ -52,21 +52,5 @@ describe('Movies reducer', () => {
 
       expect(moviesReducer(pendingState, fulfilledAction)).toEqual(fulfilledState);
     });
-  });
-
-  test('movies/incrementMaxVisibleMovies', () => {
-    const testedState = createNextState(initialStateSlice, (draft) => {
-      draft.maxVisible = 3;
-    });
-    const incrementValue = 11;
-    const action = {
-      type: 'movies/incrementMaxVisibleMovies',
-      payload: incrementValue,
-    };
-    const expectedState = createNextState(testedState, (draft) => {
-      draft.maxVisible += incrementValue;
-    });
-
-    expect(moviesReducer(testedState, action)).toEqual(expectedState);
   });
 });
