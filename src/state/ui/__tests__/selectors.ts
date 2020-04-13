@@ -1,8 +1,19 @@
 import { mockStore } from 'mocks/store';
-import { selectGenre, selectVideoPlayerFullscreen, selectMaxVisibleMovies } from '../selectors';
-import { uiInitialState } from '../slice';
+import {
+  uiInitialState,
+  selectIsAuthorizationRequired,
+  selectGenre,
+  selectVideoPlayerFullscreen,
+  selectMaxVisibleMovies,
+} from 'state/ui';
 
 describe('UI selectors', () => {
+  it('should selectIsAuthorizationRequired', () => {
+    expect(selectIsAuthorizationRequired(mockStore)).toEqual(
+      uiInitialState.isAuthorizationRequired,
+    );
+  });
+
   it('should selectGenre', () => {
     expect(selectGenre(mockStore)).toEqual(uiInitialState.genre);
   });

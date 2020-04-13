@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchMovies } from 'state/movies/slice';
 import {
+  fetchMovies,
   selectAllGenres,
   selectMoviesByGenreAndMaxVisible,
   selectMoviesSlice,
   selectAllMoviesIsVisible,
   selectMovieByRandom,
-} from 'state/movies/selectors';
+} from 'state/movies';
 import {
   setGenre,
   incrementMaxVisibleMovies,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-} from 'state/ui/slice';
-import { selectGenre } from 'state/ui/selectors';
+  selectGenre,
+} from 'state/ui';
 import { GenreClickHandler } from 'views/components/genres-list';
 
 export const useHome = () => {

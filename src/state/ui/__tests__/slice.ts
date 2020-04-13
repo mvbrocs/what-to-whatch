@@ -3,14 +3,23 @@ import { createNextState } from '@reduxjs/toolkit';
 import {
   uiInitialState,
   uiReducer,
+  toggleAuthorizationRequired,
   setGenre,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
   incrementMaxVisibleMovies,
-} from '../slice';
+} from 'state/ui';
 
 describe('UI slice', () => {
   describe('actions', () => {
+    it('should create action toggleAuthorizationRequired', () => {
+      const expectedAction = {
+        type: 'ui/toggleAuthorizationRequired',
+      };
+
+      expect(toggleAuthorizationRequired()).toEqual(expectedAction);
+    });
+
     it('should create action setGenre ', () => {
       const text = 'Fantastic';
       const expectedAction = {
@@ -55,6 +64,17 @@ describe('UI slice', () => {
   });
 
   describe('reducer', () => {
+    it('should toggleAuthorizationRequired', () => {
+      const action = {
+        type: 'ui/toggleAuthorizationRequired',
+      };
+      const expectedState = createNextState(uiInitialState, (draft) => {
+        draft.isAuthorizationRequired = !draft.isAuthorizationRequired;
+      });
+
+      expect(uiReducer(undefined, action)).toEqual(expectedState);
+    });
+
     it('should return initial state', () => {
       expect(uiReducer(undefined, { type: 'badAction' })).toEqual(uiInitialState);
     });

@@ -18,7 +18,7 @@ exports[`Tabs renders properly 1`] = `
         >
           <a
             className="movie-nav__link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Tab 1
@@ -35,7 +35,7 @@ exports[`Tabs renders properly 1`] = `
         >
           <a
             className="movie-nav__link"
-            href="#"
+            href="/"
             onClick={[Function]}
           >
             Tab 2

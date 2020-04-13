@@ -1,14 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type VideoPlayerFullscreenState = {
-  visible: boolean;
-  background_image: string | null;
-  background_color: string | null;
-  name: string | null;
-  video_link: string | null;
-};
+import { VideoPlayerFullscreenState } from './';
 
-export type State = {
+type State = {
+  isAuthorizationRequired: boolean;
   genre: string;
   videoPlayerFullscreen: VideoPlayerFullscreenState;
   maxVisibleMovies: number;
@@ -17,6 +12,7 @@ export type State = {
 export const ALL_GENRES = 'All genres';
 
 export const uiInitialState = {
+  isAuthorizationRequired: false,
   genre: ALL_GENRES,
   videoPlayerFullscreen: {
     visible: false,
@@ -28,10 +24,13 @@ export const uiInitialState = {
   maxVisibleMovies: 8,
 } as State;
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'ui',
   initialState: uiInitialState,
   reducers: {
+    toggleAuthorizationRequired(state) {
+      state.isAuthorizationRequired = !state.isAuthorizationRequired;
+    },
     setGenre(state, action: PayloadAction<string>) {
       state.genre = action.payload;
     },
@@ -54,11 +53,3 @@ const slice = createSlice({
     },
   },
 });
-
-export const uiReducer = slice.reducer;
-export const {
-  setGenre,
-  toggleVideoPlayerFullscreenVisible,
-  updateVideoPlayerFullscreenData,
-  incrementMaxVisibleMovies,
-} = slice.actions;

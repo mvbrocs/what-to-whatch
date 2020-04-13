@@ -1,16 +1,26 @@
 import React from 'react';
+import { Route, RouteProps } from 'react-router-dom';
 
-import { Home } from 'views/pages/home';
-import { Movie } from 'views/pages/movie';
 import { VideoPlayerFullscreen } from 'views/components/video-player-fullscreen';
+import { SvgSprite } from 'views/components/svg-sprite';
+import { routes } from 'routes';
 import { useApp } from './use-app';
 
+const AppRoute = (props: RouteProps) => <Route {...props} />;
+
 export const App = () => {
-  const { videoPlayerFullscreen, videoPlayerFullscreenCloseHandler } = useApp();
+  const {
+    videoPlayerFullscreen,
+    videoPlayerFullscreenCloseHandler,
+  } = useApp();
 
   return (
     <>
-      {!videoPlayerFullscreen.visible && <Home />}
+      <SvgSprite />
+
+      {!videoPlayerFullscreen.visible &&
+        routes.map((route, index) => <AppRoute {...route} key={index} />)}
+
       <VideoPlayerFullscreen
         {...videoPlayerFullscreen}
         onClose={videoPlayerFullscreenCloseHandler}

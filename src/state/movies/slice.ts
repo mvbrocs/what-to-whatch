@@ -23,7 +23,7 @@ export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
 
 export const moviesAdapter = createEntityAdapter<IFilm>();
 
-const slice = createSlice({
+export const slice = createSlice({
   name: 'movies',
   initialState: moviesAdapter.getInitialState(moviesInitialState),
   reducers: {},
@@ -41,5 +41,3 @@ const slice = createSlice({
     });
   },
 });
-
-export const moviesReducer = slice.reducer;

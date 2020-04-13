@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VideoPlayerFullscreenState } from 'state/ui/slice';
+import { VideoPlayerFullscreenState } from 'state/ui';
 import { useVideoPlayerFullscreen } from './use-video-player-fullscreen';
 import { formatDuration } from './format-duration';
 

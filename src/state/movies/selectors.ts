@@ -1,9 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { RootState } from 'state/root-reducer';
-import { ALL_GENRES } from 'state/ui/slice';
-import { selectGenre, selectMaxVisibleMovies } from 'state/ui/selectors';
-import { moviesAdapter } from './slice';
+import { ALL_GENRES, selectGenre, selectMaxVisibleMovies } from 'state/ui';
+import { moviesAdapter } from './';
 
 export const selectMoviesSlice = (state: RootState) => state.movies;
 

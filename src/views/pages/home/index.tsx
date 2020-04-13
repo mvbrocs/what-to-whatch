@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MovieList } from 'views/components/movie-list/movie-list';
+import { MovieList } from 'views/components/movie-list';
 import { GenresList } from 'views/components/genres-list';
 import { useHome } from './use-home';
 
@@ -29,7 +29,7 @@ export const Home = () => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a className="logo__link">
+              <a href="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
@@ -40,6 +40,9 @@ export const Home = () => {
               <div className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
               </div>
+              <a href="sign-in.html" className="user-block__link">
+                Sign in
+              </a>
             </div>
           </header>
 
