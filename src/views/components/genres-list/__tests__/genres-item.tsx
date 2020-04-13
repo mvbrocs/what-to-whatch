@@ -1,7 +1,7 @@
 import React from 'react';
-import { GenresItem } from './';
-
 import { shallow } from 'enzyme';
+
+import { GenresItem } from 'views/components/genres-list/genres-item';
 
 describe('GenresItem', () => {
   const mockClickHandler = jest.fn();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { VideoPlayerFullscreen } from './video-player-fullscreen';
+import { VideoPlayerFullscreen } from 'views/components/video-player-fullscreen';
 import { mockFilms } from 'mocks/films';
 
 describe('VideoPlayerFullscreen', () => {

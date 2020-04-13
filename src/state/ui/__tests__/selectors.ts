@@ -1,6 +1,6 @@
 import { mockStore } from 'mocks/store';
-import { selectGenre, selectVideoPlayerFullscreen, selectMaxVisibleMovies } from './selectors';
-import { uiInitialState } from './slice';
+import { selectGenre, selectVideoPlayerFullscreen, selectMaxVisibleMovies } from '../selectors';
+import { uiInitialState } from '../slice';
 
 describe('UI selectors', () => {
   it('should selectGenre', () => {

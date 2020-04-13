@@ -1,4 +1,4 @@
-import { formatDuration, addZero } from './format-duration';
+import { formatDuration, addZero } from '../format-duration';
 
 describe('addZero', () => {
   it('should return 00, if arg 0', () => {

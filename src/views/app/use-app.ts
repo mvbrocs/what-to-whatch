@@ -1,17 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import {
-  selectVideoPlayerFullscreenState,
-  toggleVideoPlayerFullscreenVisible,
-} from 'state/video-player-fullscreen';
+import { selectVideoPlayerFullscreen } from 'state/ui/selectors';
+import { toggleVideoPlayerFullscreenVisible } from 'state/ui/slice';
 
 export const useApp = () => {
-  const videoPlayerFullscreenState = useSelector(selectVideoPlayerFullscreenState);
+  const videoPlayerFullscreen = useSelector(selectVideoPlayerFullscreen);
   const dispatch = useDispatch();
+
   const videoPlayerFullscreenCloseHandler = () => dispatch(toggleVideoPlayerFullscreenVisible());
 
   return {
-    videoPlayerFullscreenState,
+    videoPlayerFullscreen,
     videoPlayerFullscreenCloseHandler,
   };
 };

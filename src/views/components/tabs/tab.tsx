@@ -13,7 +13,7 @@ export const Tab = ({ active, children, onClick }: TabProps) => (
       'movie-nav__item--active': active,
     })}
   >
-    <a href="#" className="movie-nav__link" onClick={onClick}>
+    <a href="/" className="movie-nav__link" onClick={onClick}>
       {children}
     </a>
   </li>

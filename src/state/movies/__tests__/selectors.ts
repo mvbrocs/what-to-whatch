@@ -8,7 +8,7 @@ import {
   selectMoviesByGenreAndMaxVisible,
   selectAllMoviesIsVisible,
   selectMovieByRandom,
-} from './selectors';
+} from '../selectors';
 import { ALL_GENRES } from 'state/ui/slice';
 import { mockStore } from 'mocks/store';
 import { mockFilms } from 'mocks/films';

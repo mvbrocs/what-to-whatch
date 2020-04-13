@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type VideoPlayerFullscreen = {
+export type VideoPlayerFullscreenState = {
   visible: boolean;
   background_image: string | null;
   background_color: string | null;
@@ -10,7 +10,7 @@ type VideoPlayerFullscreen = {
 
 export type State = {
   genre: string;
-  videoPlayerFullscreen: VideoPlayerFullscreen;
+  videoPlayerFullscreen: VideoPlayerFullscreenState;
   maxVisibleMovies: number;
 };
 
@@ -40,7 +40,7 @@ const slice = createSlice({
     },
     updateVideoPlayerFullscreenData(
       state,
-      action: PayloadAction<Omit<VideoPlayerFullscreen, 'visible'>>,
+      action: PayloadAction<Omit<VideoPlayerFullscreenState, 'visible'>>,
     ) {
       const { background_color, background_image, name, video_link } = action.payload;
 

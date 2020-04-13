@@ -6,13 +6,13 @@ import { VideoPlayerFullscreen } from 'views/components/video-player-fullscreen'
 import { useApp } from './use-app';
 
 export const App = () => {
-  const { videoPlayerFullscreenState, videoPlayerFullscreenCloseHandler } = useApp();
+  const { videoPlayerFullscreen, videoPlayerFullscreenCloseHandler } = useApp();
 
   return (
     <>
-      {!videoPlayerFullscreenState.visible && <Home />}
+      {!videoPlayerFullscreen.visible && <Home />}
       <VideoPlayerFullscreen
-        {...videoPlayerFullscreenState}
+        {...videoPlayerFullscreen}
         onClose={videoPlayerFullscreenCloseHandler}
       />
     </>
