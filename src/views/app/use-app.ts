@@ -4,7 +4,7 @@ import {
   toggleVideoPlayerFullscreenVisible,
   selectVideoPlayerFullscreen,
   selectIsAuthorizationRequired,
-} from 'state/ui';
+} from 'src/state/ui';
 
 export const useApp = () => {
   const videoPlayerFullscreen = useSelector(selectVideoPlayerFullscreen);

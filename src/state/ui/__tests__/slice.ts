@@ -8,7 +8,7 @@ import {
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
   incrementMaxVisibleMovies,
-} from 'state/ui';
+} from 'src/state/ui';
 
 describe('UI slice', () => {
   describe('actions', () => {

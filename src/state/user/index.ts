@@ -1,16 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { goBack } from 'connected-react-router';
 
-import { api } from 'api';
-import { Credentials, User } from 'api/login';
-import { RootState } from 'state/root-reducer';
+import { api } from 'src/api';
+import { Credentials, User } from 'src/api/login';
+import { RootState } from 'src/state/root-reducer';
 
 type State = null | User;
 
-export const login = createAsyncThunk('user/login', async (credentials: Credentials) => {
-  const { data } = await api.login(credentials);
+export const login = createAsyncThunk(
+  'user/login',
+  async (credentials: Credentials, { dispatch }) => {
+    const { data } = await api.login(credentials);
 
-  return data;
-});
+    dispatch(goBack());
+
+    return data;
+  },
+);
 
 export const userInitialState = null as State;
 

@@ -1,4 +1,4 @@
-import { RootState } from '../root-reducer';
+import { RootState } from 'src/state/root-reducer';
 
 export const selectIsAuthorizationRequired = (state: RootState) => state.ui.isAuthorizationRequired;
 export const selectGenre = (state: RootState) => state.ui.genre;

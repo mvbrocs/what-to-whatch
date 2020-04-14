@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { TabPane, Tabs } from 'views/components/tabs';
-import { MovieList } from 'views/components/movie-list';
-import { mockFilms } from 'mocks/films';
+import { TabPane, Tabs } from 'src/views/components/tabs';
+import { MovieList } from 'src/views/components/movie-list';
+import { mockFilms } from 'src/mocks/films';
 
 export const Movie = () => (
   <>

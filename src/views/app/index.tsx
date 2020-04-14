@@ -1,18 +1,15 @@
 import React from 'react';
 import { Route, RouteProps } from 'react-router-dom';
 
-import { VideoPlayerFullscreen } from 'views/components/video-player-fullscreen';
-import { SvgSprite } from 'views/components/svg-sprite';
-import { routes } from 'routes';
+import { VideoPlayerFullscreen } from 'src/views/components/video-player-fullscreen';
+import { SvgSprite } from 'src/views/components/svg-sprite';
+import { routes } from 'src/routes';
 import { useApp } from './use-app';
 
 const AppRoute = (props: RouteProps) => <Route {...props} />;
 
 export const App = () => {
-  const {
-    videoPlayerFullscreen,
-    videoPlayerFullscreenCloseHandler,
-  } = useApp();
+  const { videoPlayerFullscreen, videoPlayerFullscreenCloseHandler } = useApp();
 
   return (
     <>

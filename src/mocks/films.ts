@@ -1,4 +1,4 @@
-import { IFilm } from 'api/films';
+import { IFilm } from 'src/api/films';
 
 export const mockFilms: IFilm[] = [
   {

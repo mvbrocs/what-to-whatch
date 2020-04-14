@@ -3,7 +3,7 @@ import React from 'react';
 import { useSignIn } from './use-sign-in';
 
 export const SignIn = () => {
-  const { formik } = useSignIn();
+  const { formik, user } = useSignIn();
 
   return (
     <div className="user-page">

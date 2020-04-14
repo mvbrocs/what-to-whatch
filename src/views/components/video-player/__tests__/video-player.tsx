@@ -2,8 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 
-import { VideoPlayer } from 'views/components/video-player';
-import { mockFilms } from 'mocks/films';
+import { VideoPlayer } from 'src/views/components/video-player';
+import { mockFilms } from 'src/mocks/films';
 
 describe('VideoPlayer', () => {
   const assetsProps = {

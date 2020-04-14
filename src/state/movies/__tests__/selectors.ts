@@ -8,10 +8,10 @@ import {
   selectMoviesByGenreAndMaxVisible,
   selectAllMoviesIsVisible,
   selectMovieByRandom,
-} from 'state/movies';
-import { ALL_GENRES } from 'state/ui';
-import { mockStore } from 'mocks/store';
-import { mockFilms } from 'mocks/films';
+} from 'src/state/movies';
+import { ALL_GENRES } from 'src/state/ui';
+import { mockStore } from 'src/mocks/store';
+import { mockFilms } from 'src/mocks/films';
 
 describe('Movies selectors', () => {
   const genre1 = 'Genre 1';

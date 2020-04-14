@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { MovieList } from 'views/components/movie-list';
-import { GenresList } from 'views/components/genres-list';
+import { MovieList } from 'src/views/components/movie-list';
+import { GenresList } from 'src/views/components/genres-list';
+import { Header } from 'src/views/components/header';
+import { UserBlock } from 'src/views/components/user-block';
 import { useHome } from './use-home';
 
 export const Home = () => {
@@ -27,24 +29,9 @@ export const Home = () => {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <a href="/" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-              <a href="sign-in.html" className="user-block__link">
-                Sign in
-              </a>
-            </div>
-          </header>
+          <Header className="movie-card__head">
+            <UserBlock />
+          </Header>
 
           <div className="movie-card__wrap">
             <div className="movie-card__info">

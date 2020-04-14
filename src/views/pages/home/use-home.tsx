@@ -8,15 +8,15 @@ import {
   selectMoviesSlice,
   selectAllMoviesIsVisible,
   selectMovieByRandom,
-} from 'state/movies';
+} from 'src/state/movies';
 import {
   setGenre,
   incrementMaxVisibleMovies,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
   selectGenre,
-} from 'state/ui';
-import { GenreClickHandler } from 'views/components/genres-list';
+} from 'src/state/ui';
+import { GenreClickHandler } from 'src/views/components/genres-list';
 
 export const useHome = () => {
   const genres = useSelector(selectAllGenres);

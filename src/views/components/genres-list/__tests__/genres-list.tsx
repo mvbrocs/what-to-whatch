@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { GenresList } from 'views/components/genres-list';
+import { GenresList } from 'src/views/components/genres-list';
 
 describe('GenresList', () => {
   const mockOnGenreClick = jest.fn();

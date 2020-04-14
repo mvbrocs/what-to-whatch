@@ -1,6 +1,6 @@
-import { selectUser, userReducer } from 'state/user';
-import { User } from 'api/login';
-import { mockStore } from 'mocks/store';
+import { selectUser, userReducer } from 'src/state/user';
+import { User } from 'src/api/login';
+import { mockStore } from 'src/mocks/store';
 
 describe('UI state', () => {
   describe('reducer', () => {

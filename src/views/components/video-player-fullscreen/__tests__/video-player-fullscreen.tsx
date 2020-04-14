@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { VideoPlayerFullscreen } from 'views/components/video-player-fullscreen';
-import { mockFilms } from 'mocks/films';
+import { VideoPlayerFullscreen } from 'src/views/components/video-player-fullscreen';
+import { mockFilms } from 'src/mocks/films';
 
 describe('VideoPlayerFullscreen', () => {
   const closeHandlerMock = jest.fn();

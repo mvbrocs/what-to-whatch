@@ -1,11 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { MovieCard } from '../index';
-import { mockFilms } from 'mocks/films';
+import { MovieCard } from 'src/views/components/movie-card';
+import { mockFilms } from 'src/mocks/films';
 
 describe('MovieCard', () => {
   const props = {
+    id: mockFilms[0].id,
     name: mockFilms[0].name,
     preview_image: mockFilms[0].preview_image,
     preview_video_link: mockFilms[0].preview_video_link,

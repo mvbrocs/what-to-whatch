@@ -26,12 +26,12 @@ exports[`MovieCard renders properly 1`] = `
   <h3
     className="small-movie-card__title"
   >
-    <a
+    <Link
       className="small-movie-card__link"
-      href="/"
+      to="/films/1"
     >
       Orlando
-    </a>
+    </Link>
   </h3>
 </article>
 `;

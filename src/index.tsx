@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 
+import './assets/style.min.css';
 import { store } from './state/store';
-import 'assets/style.min.css';
+import { history } from './history';
 
 const render = () => {
-  const App = require('views/app').App;
+  const App = require('./views/app').App;
 
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter>
+      <ConnectedRouter history={history}>
         <App />
-      </BrowserRouter>
+      </ConnectedRouter>
     </Provider>,
     document.getElementById('root'),
   );
@@ -22,5 +23,5 @@ const render = () => {
 render();
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('views/app', render);
+  module.hot.accept('./views/app', render);
 }

@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, createAsyncThunk, EntityState } from '@reduxjs/toolkit';
 
-import { api } from 'api';
-import { IFilm } from 'api/films';
+import { api } from 'src/api';
+import { IFilm } from 'src/api/films';
 
 type State = {
   loaded: boolean;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { MovieCard } from 'views/components/movie-card';
-import { IFilm } from 'api/films';
+import { MovieCard } from 'src/views/components/movie-card';
+import { IFilm } from 'src/api/films';
 
 type MovieListProps = {
   movies: IFilm[];

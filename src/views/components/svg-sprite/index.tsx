@@ -1,10 +1,6 @@
 import React from 'react';
 
-import { Add } from 'views/components/icons/add';
-import { FullScreen } from 'views/components/icons/full-screen';
-import { InList } from 'views/components/icons/in-list';
-import { Pause } from 'views/components/icons/pause';
-import { PlayS } from 'views/components/icons/play-s';
+import { Add, PlayS, Pause, InList, FullScreen } from 'src/views/components/icons';
 
 export const SvgSprite = () => (
   <div className="visually-hidden">

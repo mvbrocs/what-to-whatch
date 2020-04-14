@@ -1,7 +1,7 @@
 import { createNextState } from '@reduxjs/toolkit';
 
-import { moviesInitialState, moviesAdapter, moviesReducer } from 'state/movies';
-import { mockFilms } from 'mocks/films';
+import { moviesInitialState, moviesAdapter, moviesReducer } from 'src/state/movies';
+import { mockFilms } from 'src/mocks/films';
 
 describe('Movies reducer', () => {
   const initialStateSlice = moviesAdapter.getInitialState(moviesInitialState);
