@@ -8,6 +8,7 @@ import {
   selectMoviesByGenreAndMaxVisible,
   selectAllMoviesIsVisible,
   selectMovieByRandom,
+  makeSelectMovieById,
 } from 'src/state/movies/selectors';
 import { ALL_GENRES } from 'src/state/ui/slice';
 import { mockStore, mockFilms } from 'src/mocks';
@@ -198,5 +199,15 @@ describe('Movies selectors', () => {
     test('movies loaded', () => {
       expect(typeof selectMovieByRandom(storeWithMovies)?.name).toEqual('string');
     });
+  });
+
+  describe('selectMovieById', () => {
+    const selectMovieById = makeSelectMovieById('1');
+
+    it('should return null, if no movies', () => {
+      expect(selectMovieById(mockStore)).toEqual(null);
+    });
+
+    it('should return movie, if movies', () => {});
   });
 });

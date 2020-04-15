@@ -36,3 +36,6 @@ export const selectAllMoviesIsVisible = createSelector(
 export const selectMovieByRandom = createSelector(selectAllMovies, (movies) =>
   movies.length ? movies[Math.floor(Math.random() * movies.length)] : null,
 );
+
+export const makeSelectMovieById = (id: string) =>
+  createSelector(selectAllMovies, (movies) => null);

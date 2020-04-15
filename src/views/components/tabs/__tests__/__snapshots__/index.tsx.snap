@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs renders properly 1`] = `
+<Tabs>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <Tab
+        active={true}
+        key="1"
+        onClick={[Function]}
+      >
+        <li
+          className="movie-nav__item movie-nav__item--active"
+        >
+          <a
+            className="movie-nav__link"
+            href="/"
+            onClick={[Function]}
+          >
+            Tab 1
+          </a>
+        </li>
+      </Tab>
+      <Tab
+        active={false}
+        key="2"
+        onClick={[Function]}
+      >
+        <li
+          className="movie-nav__item"
+        >
+          <a
+            className="movie-nav__link"
+            href="/"
+            onClick={[Function]}
+          >
+            Tab 2
+          </a>
+        </li>
+      </Tab>
+    </ul>
+  </nav>
+  <div
+    hidden={false}
+    key="1"
+  >
+    <TabPane
+      index="1"
+      tab="Tab 1"
+    >
+      Tab content 1
+    </TabPane>
+  </div>
+  <div
+    hidden={true}
+    key="2"
+  >
+    <TabPane
+      index="2"
+      tab="Tab 2"
+    >
+      Tab content 2
+    </TabPane>
+  </div>
+</Tabs>
+`;
