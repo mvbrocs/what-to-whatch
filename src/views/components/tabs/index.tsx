@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Tab } from './tab';
-import { TabPane } from './tab-pane';
 import { useTabs } from './use-tabs';
 
 type TabsProps = {
@@ -40,4 +39,4 @@ const Tabs = ({ children }: TabsProps) => {
   );
 };
 
-export { Tabs, TabPane };
+export default Tabs;

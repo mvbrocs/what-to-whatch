@@ -6,4 +6,6 @@ type TabPaneProps = {
   children: ReactNode;
 };
 
-export const TabPane = ({ children }: TabPaneProps) => <>{children}</>;
+const TabPane = ({ children }: TabPaneProps) => <>{children}</>;
+
+export default TabPane;

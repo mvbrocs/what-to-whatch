@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { TabPane, Tabs } from 'src/views/components/tabs';
-import { MovieList } from 'src/views/components/movie-list';
-import { mockFilms } from 'src/mocks/films';
+import { TabPane, Tabs, MovieList, Header, Logo, UserBlock, Btn } from 'src/views/components';
+import { mockFilms } from 'src/mocks';
 
 export const Movie = () => (
   <>
@@ -14,21 +13,9 @@ export const Movie = () => (
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header className="movie-card__head">
+          <UserBlock />
+        </Header>
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
@@ -39,18 +26,20 @@ export const Movie = () => (
             </p>
 
             <div className="movie-card__buttons">
-              {/*<button className="btn btn--play movie-card__button" type="button">*/}
+              {/*<Btn onClick={}>*/}
               {/*  <svg viewBox="0 0 19 19" width="19" height="19">*/}
-              {/*    <use xlink:href="#play-s"></use>*/}
+              {/*    <use xlinkHref="#play-s" />*/}
               {/*  </svg>*/}
               {/*  <span>Play</span>*/}
-              {/*</button>*/}
+              {/*</Btn>*/}
+
               {/*<button className="btn btn--list movie-card__button" type="button">*/}
               {/*  <svg viewBox="0 0 19 20" width="19" height="20">*/}
-              {/*    <use xlink:href="#add"></use>*/}
+              {/*    <use xlinkHref="#add" />*/}
               {/*  </svg>*/}
               {/*  <span>My list</span>*/}
               {/*</button>*/}
+
               <a href="add-review.html" className="btn movie-card__button">
                 Add review
               </a>
@@ -281,13 +270,7 @@ export const Movie = () => (
       </section>
 
       <footer className="page-footer">
-        <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo light />
 
         <div className="copyright">
           <p>© 2019 What to watch Ltd.</p>

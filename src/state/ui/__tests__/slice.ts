@@ -1,14 +1,13 @@
 import { createNextState } from '@reduxjs/toolkit';
 
+import { uiInitialState, uiReducer } from 'src/state/ui/slice';
 import {
-  uiInitialState,
-  uiReducer,
   toggleAuthorizationRequired,
   setGenre,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
   incrementMaxVisibleMovies,
-} from 'src/state/ui';
+} from 'src/state/ui/actions';
 
 describe('UI slice', () => {
   describe('actions', () => {
@@ -114,10 +113,7 @@ describe('UI slice', () => {
         },
       };
       const expectedState = createNextState(uiInitialState, (draft) => {
-        draft.videoPlayerFullscreen.video_link = action.payload.video_link;
-        draft.videoPlayerFullscreen.name = action.payload.name;
-        draft.videoPlayerFullscreen.background_image = action.payload.background_image;
-        draft.videoPlayerFullscreen.background_color = action.payload.background_color;
+        draft.videoPlayerFullscreen.data = action.payload;
       });
 
       expect(uiReducer(uiInitialState, action)).toEqual(expectedState);

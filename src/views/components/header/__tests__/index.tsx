@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Header } from 'src/views/components/header';
+import { Header } from 'src/views/components';
 
 describe('Header', () => {
   it('should render header without children', () => {

@@ -1,4 +1,4 @@
-import { root } from './root';
+import { appAxios } from './';
 
 export type Credentials = {
   email: string;
@@ -12,4 +12,4 @@ export type User = {
   avatar_url: string;
 };
 
-export const login = (data: Credentials) => root.post<User>('/login', data);
+export const loginAPI = (data: Credentials) => appAxios.post<User>('/login', data);

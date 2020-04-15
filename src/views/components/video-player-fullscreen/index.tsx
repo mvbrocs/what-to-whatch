@@ -1,19 +1,23 @@
 import React from 'react';
 
-import { VideoPlayerFullscreenState } from 'src/state/ui';
 import { useVideoPlayerFullscreen } from './use-video-player-fullscreen';
 import { formatDuration } from './format-duration';
 
 type VideoPlayerFullscreenProps = {
+  visible: boolean;
+  backgroundColor?: string;
+  backgroundImage?: string;
+  name?: string;
+  videoLink?: string;
   onClose: () => void;
-} & VideoPlayerFullscreenState;
+};
 
-export const VideoPlayerFullscreen = ({
+const VideoPlayerFullscreen = ({
   visible,
-  background_color,
-  background_image,
+  backgroundColor,
+  backgroundImage,
   name,
-  video_link,
+  videoLink,
   onClose,
 }: VideoPlayerFullscreenProps) => {
   const {
@@ -44,11 +48,11 @@ export const VideoPlayerFullscreen = ({
   );
   const btnPlayHandler = play ? pauseHandler : playHandler;
 
-  if (!visible || !video_link || !background_image || !background_color) return null;
+  if (!visible) return null;
 
   return (
-    <div className="player" style={{ backgroundColor: background_color }}>
-      <video ref={videoRef} src={video_link} className="player__video" poster={background_image} />
+    <div className="player" style={{ backgroundColor: backgroundColor }}>
+      <video ref={videoRef} src={videoLink} className="player__video" poster={backgroundImage} />
 
       <button type="button" className="player__exit" onClick={btnExitClickHandler}>
         Exit
@@ -88,3 +92,5 @@ export const VideoPlayerFullscreen = ({
     </div>
   );
 };
+
+export default VideoPlayerFullscreen;

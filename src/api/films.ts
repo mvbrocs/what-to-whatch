@@ -1,4 +1,4 @@
-import { root } from './root';
+import { appAxios } from './';
 
 export interface IFilm {
   name: string;
@@ -20,6 +20,6 @@ export interface IFilm {
   preview_video_link: string;
 }
 
-export const films = {
-  getAll: () => root.get<IFilm[]>('/films'),
+export const filmsAPI = {
+  getAll: () => appAxios.get<IFilm[]>('/films'),
 };

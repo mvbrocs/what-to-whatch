@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import './assets/style.min.css';
 import { store } from './state/store';
-import { history } from './history';
+import { history } from './state/history';
 
 const render = () => {
   const App = require('./views/app').App;

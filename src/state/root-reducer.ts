@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { connectRouter } from 'connected-react-router';
 
-import { history } from 'src/history';
-import { uiReducer } from './ui';
-import { moviesReducer } from './movies';
-import { userReducer } from './user';
+import { uiReducer } from './ui/slice';
+import { moviesReducer } from './movies/slice';
+import { userReducer } from './user/slice';
+import { history } from './history';
 
 export const rootReducer = combineReducers({
   router: connectRouter(history),

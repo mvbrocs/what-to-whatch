@@ -1,8 +1,7 @@
 import React from 'react';
 import { Route, RouteProps } from 'react-router-dom';
 
-import { VideoPlayerFullscreen } from 'src/views/components/video-player-fullscreen';
-import { SvgSprite } from 'src/views/components/svg-sprite';
+import { VideoPlayerFullscreen } from 'src/views/components';
 import { routes } from 'src/routes';
 import { useApp } from './use-app';
 
@@ -13,13 +12,15 @@ export const App = () => {
 
   return (
     <>
-      <SvgSprite />
-
       {!videoPlayerFullscreen.visible &&
         routes.map((route, index) => <AppRoute {...route} key={index} />)}
 
       <VideoPlayerFullscreen
-        {...videoPlayerFullscreen}
+        visible={videoPlayerFullscreen.visible}
+        name={videoPlayerFullscreen.data?.name}
+        backgroundImage={videoPlayerFullscreen.data?.background_image}
+        backgroundColor={videoPlayerFullscreen.data?.background_color}
+        videoLink={videoPlayerFullscreen.data?.video_link}
         onClose={videoPlayerFullscreenCloseHandler}
       />
     </>

@@ -1,23 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { VideoPlayer } from 'src/views/components/video-player';
+import { VideoPlayer } from 'src/views/components';
 import { Path } from 'src/routes';
 import { useMovieCard } from './use-movie-card';
 
-export type MovieCardProps = {
+type MovieCardProps = {
   id: number;
   name: string;
-  preview_image: string;
-  preview_video_link: string;
+  previewImage: string;
+  previewVideoLink: string;
 };
 
 const VIDEO_MS_DELAY = 1000;
 
-export const MovieCard = ({ id, name, preview_image, preview_video_link }: MovieCardProps) => {
+const MovieCard = ({ id, name, previewImage, previewVideoLink }: MovieCardProps) => {
   const { mouseEnter, cardMouseEnterHandler, cardMouseLeaveHandler } = useMovieCard();
   const videoPlayerPoster = {
-    src: preview_image,
+    src: previewImage,
     alt: name,
     width: 280,
     height: 175,
@@ -32,7 +32,7 @@ export const MovieCard = ({ id, name, preview_image, preview_video_link }: Movie
       <div className="small-movie-card__image">
         <VideoPlayer
           play={mouseEnter}
-          src={preview_video_link}
+          src={previewVideoLink}
           poster={videoPlayerPoster}
           delay={VIDEO_MS_DELAY}
         />
@@ -45,3 +45,5 @@ export const MovieCard = ({ id, name, preview_image, preview_video_link }: Movie
     </article>
   );
 };
+
+export default MovieCard;

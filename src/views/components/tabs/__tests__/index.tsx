@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Tabs, TabPane } from 'src/views/components/tabs';
+import { Tabs, TabPane } from 'src/views/components';
 
 describe('Tabs', () => {
   const tabs = mount(

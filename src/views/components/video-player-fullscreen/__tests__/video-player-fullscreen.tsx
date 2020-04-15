@@ -1,17 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { VideoPlayerFullscreen } from 'src/views/components/video-player-fullscreen';
-import { mockFilms } from 'src/mocks/films';
+import { VideoPlayerFullscreen } from 'src/views/components';
+import { mockFilms } from 'src/mocks';
 
 describe('VideoPlayerFullscreen', () => {
   const closeHandlerMock = jest.fn();
   const props = {
     visible: true,
-    background_image: mockFilms[0].background_image,
-    background_color: mockFilms[0].background_color,
+    backgroundImage: mockFilms[0].background_image,
+    backgroundColor: mockFilms[0].background_color,
     name: mockFilms[0].name,
-    video_link: mockFilms[0].video_link,
+    videoLink: mockFilms[0].video_link,
     onClose: closeHandlerMock,
   };
   const videoPlayerFullscreen = shallow(<VideoPlayerFullscreen {...props} />);

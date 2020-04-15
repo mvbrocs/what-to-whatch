@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { routerMiddleware } from 'connected-react-router';
 
 import { rootReducer } from './root-reducer';
-import { history } from 'src/history';
+import { history } from './history';
 
 const middleware = [...getDefaultMiddleware(), routerMiddleware(history)];
 

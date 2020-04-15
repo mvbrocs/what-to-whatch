@@ -1,6 +1,6 @@
-import { createEntityAdapter, createSlice, createAsyncThunk, EntityState } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit';
 
-import { api } from 'src/api';
+import { fetchMovies } from './actions';
 import { IFilm } from 'src/api/films';
 
 type State = {
@@ -14,12 +14,6 @@ export const moviesInitialState = {
   loading: false,
   error: null,
 } as State;
-
-export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
-  const { data } = await api.films.getAll();
-
-  return data;
-});
 
 export const moviesAdapter = createEntityAdapter<IFilm>();
 
@@ -41,3 +35,5 @@ export const slice = createSlice({
     });
   },
 });
+
+export const moviesReducer = slice.reducer;

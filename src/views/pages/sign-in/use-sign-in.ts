@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { login, selectUser } from 'src/state/user';
+import { login } from 'src/state/user/actions';
 
 export const useSignIn = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ export const useSignIn = () => {
       dispatch(login(values));
     },
   });
-  const user = useSelector(selectUser);
 
-  return { formik, user };
+  return { formik };
 };

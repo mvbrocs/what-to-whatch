@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { MovieList } from 'src/views/components/movie-list';
-import { GenresList } from 'src/views/components/genres-list';
-import { Header } from 'src/views/components/header';
-import { UserBlock } from 'src/views/components/user-block';
+import { MovieList, GenresList, Header, UserBlock, Logo, Btn } from 'src/views/components';
+import { PlayS } from 'src/views/icons';
 import { useHome } from './use-home';
 
 export const Home = () => {
@@ -47,22 +45,16 @@ export const Home = () => {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button
-                    className="btn btn--play movie-card__button"
-                    type="button"
-                    onClick={btnPlayClickHandler}
-                  >
-                    <svg viewBox="0 0 19 19" width="19" height="19">
-                      <use xlinkHref="#play-s" />
-                    </svg>
+                  <Btn onClick={btnPlayClickHandler}>
+                    <PlayS />
                     <span>Play</span>
-                  </button>
-                  <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add" />
-                    </svg>
-                    <span>My list</span>
-                  </button>
+                  </Btn>
+                  {/*<button className="btn btn--list movie-card__button" type="button">*/}
+                  {/*  <svg viewBox="0 0 19 20" width="19" height="20">*/}
+                  {/*    <use xlinkHref="#add" />*/}
+                  {/*  </svg>*/}
+                  {/*  <span>My list</span>*/}
+                  {/*</button>*/}
                 </div>
               </div>
             </div>
@@ -95,13 +87,7 @@ export const Home = () => {
         </section>
 
         <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo light />
 
           <div className="copyright">
             <p>© 2019 What to watch Ltd.</p>

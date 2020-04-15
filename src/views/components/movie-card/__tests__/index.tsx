@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { MovieCard } from 'src/views/components/movie-card';
-import { mockFilms } from 'src/mocks/films';
+import { MovieCard } from 'src/views/components';
+import { mockFilms } from 'src/mocks';
 
 describe('MovieCard', () => {
   const props = {

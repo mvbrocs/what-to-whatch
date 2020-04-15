@@ -23,4 +23,4 @@ const GenresList = ({ genres, activeGenre, onGenreClick }: GenresListProps) => (
   </ul>
 );
 
-export { GenresList };
+export default GenresList;

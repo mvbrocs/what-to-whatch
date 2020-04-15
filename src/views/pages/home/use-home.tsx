@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { fetchMovies } from 'src/state/movies/actions';
 import {
-  fetchMovies,
   selectAllGenres,
   selectMoviesByGenreAndMaxVisible,
   selectMoviesSlice,
   selectAllMoviesIsVisible,
   selectMovieByRandom,
-} from 'src/state/movies';
+} from 'src/state/movies/selectors';
 import {
   setGenre,
   incrementMaxVisibleMovies,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-  selectGenre,
-} from 'src/state/ui';
+} from 'src/state/ui/actions';
+import { selectGenre } from 'src/state/ui/selectors';
 import { GenreClickHandler } from 'src/views/components/genres-list';
 
 export const useHome = () => {
@@ -35,18 +35,17 @@ export const useHome = () => {
   const btnShowMoreClickHandler = () => dispatch(incrementMaxVisibleMovies(20));
 
   const btnPlayClickHandler = () => {
-    dispatch(toggleVideoPlayerFullscreenVisible());
-
-    if (mainMovie) {
-      dispatch(
-        updateVideoPlayerFullscreenData({
+    dispatch(
+      updateVideoPlayerFullscreenData(
+        mainMovie && {
           background_color: mainMovie.background_color,
           background_image: mainMovie.background_image,
           name: mainMovie.name,
           video_link: mainMovie.video_link,
-        }),
-      );
-    }
+        },
+      ),
+    );
+    dispatch(toggleVideoPlayerFullscreenVisible());
   };
 
   useEffect(() => {

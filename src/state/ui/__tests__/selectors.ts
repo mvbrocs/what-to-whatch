@@ -1,11 +1,11 @@
-import { mockStore } from 'src/mocks/store';
+import { mockStore } from 'src/mocks';
 import {
-  uiInitialState,
   selectIsAuthorizationRequired,
   selectGenre,
   selectVideoPlayerFullscreen,
   selectMaxVisibleMovies,
-} from 'src/state/ui';
+} from 'src/state/ui/selectors';
+import { uiInitialState } from 'src/state/ui/slice';
 
 describe('UI selectors', () => {
   it('should selectIsAuthorizationRequired', () => {

@@ -5,7 +5,7 @@ import { Path } from 'src/routes';
 import { useUserBlock } from './use-user-block';
 import { api } from 'src/api';
 
-export const UserBlock = () => {
+const UserBlock = () => {
   const { user } = useUserBlock();
 
   return (
@@ -27,3 +27,5 @@ export const UserBlock = () => {
     </div>
   );
 };
+
+export default UserBlock;

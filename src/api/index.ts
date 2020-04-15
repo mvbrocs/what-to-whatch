@@ -1,9 +1,16 @@
-import { films } from './films';
-import { login } from './login';
-import { BASE_URL } from './root';
+import axios from 'axios';
+
+import { filmsAPI } from './films';
+import { loginAPI } from './login';
+
+const BASE_URL = 'https://htmlacademy-react-2.appspot.com/wtw';
+
+export const appAxios = axios.create({
+  baseURL: BASE_URL,
+});
 
 export const api = {
   BASE_URL,
-  films,
-  login,
+  films: filmsAPI,
+  login: loginAPI,
 };

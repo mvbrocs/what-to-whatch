@@ -14,7 +14,7 @@ type VideoPlayerProps = {
   delay?: number;
 };
 
-export const VideoPlayer = ({ play, src, poster, delay }: VideoPlayerProps) => {
+const VideoPlayer = ({ play, src, poster, delay }: VideoPlayerProps) => {
   const { start, videoRef } = useVideoPlayer({ play, delay });
 
   return (
@@ -26,3 +26,5 @@ export const VideoPlayer = ({ play, src, poster, delay }: VideoPlayerProps) => {
     </>
   );
 };
+
+export default VideoPlayer;

@@ -1,6 +1,6 @@
 import { IFilm } from 'src/api/films';
 
-export const mockFilms: IFilm[] = [
+const mockFilms: IFilm[] = [
   {
     name: 'Orlando',
     poster_image: 'https://htmlacademy-react-2.appspot.com/wtw/static/film/poster/Orlando.jpg',
@@ -569,3 +569,5 @@ export const mockFilms: IFilm[] = [
       'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
   },
 ];
+
+export default mockFilms;
