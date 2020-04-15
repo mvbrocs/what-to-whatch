@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const FullScreen = () => (
-  <>
+const FullScreenIcon = () => (
+  <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -30,5 +30,7 @@ export const FullScreen = () => (
       fill="#FFF9D9"
       fillOpacity="0.7"
     />
-  </>
+  </svg>
 );
+
+export default FullScreenIcon;

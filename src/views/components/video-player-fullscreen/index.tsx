@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { FullScreenIcon, PauseIcon, PlaySIcon } from 'src/views/icons';
 import { useVideoPlayerFullscreen } from './use-video-player-fullscreen';
 import { formatDuration } from './format-duration';
 
@@ -33,16 +34,12 @@ const VideoPlayerFullscreen = ({
   } = useVideoPlayerFullscreen(visible, onClose);
   const btnPlayContent = play ? (
     <>
-      <svg viewBox="0 0 14 21" width="14" height="21">
-        <use xlinkHref="#pause" />
-      </svg>
+      <PauseIcon />
       <span className="test-btn-play-text">Pause</span>
     </>
   ) : (
     <>
-      <svg viewBox="0 0 19 19" width="19" height="19">
-        <use xlinkHref="#play-s" />
-      </svg>
+      <PlaySIcon />
       <span className="test-btn-play-text">Play</span>
     </>
   );
@@ -81,9 +78,7 @@ const VideoPlayerFullscreen = ({
               className="player__full-screen"
               onClick={btnFullscreenClickHandler}
             >
-              <svg viewBox="0 0 27 27" width="27" height="27">
-                <use xlinkHref="#full-screen" />
-              </svg>
+              <FullScreenIcon />
               <span>Full screen</span>
             </button>
           </div>

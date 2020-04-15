@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MovieList, GenresList, Header, UserBlock, Logo, Btn } from 'src/views/components';
-import { PlayS } from 'src/views/icons';
+import { PlaySIcon } from 'src/views/icons';
 import { useHome } from './use-home';
 
 export const Home = () => {
@@ -46,7 +46,7 @@ export const Home = () => {
 
                 <div className="movie-card__buttons">
                   <Btn onClick={btnPlayClickHandler}>
-                    <PlayS />
+                    <PlaySIcon />
                     <span>Play</span>
                   </Btn>
                   {/*<button className="btn btn--list movie-card__button" type="button">*/}
