@@ -2,7 +2,7 @@ import { slice } from './slice';
 
 export const {
   toggleAuthorizationRequired,
-  incrementMaxVisibleMovies,
+  setMaxVisibleMovies,
   updateVideoPlayerFullscreenData,
   toggleVideoPlayerFullscreenVisible,
   setGenre,

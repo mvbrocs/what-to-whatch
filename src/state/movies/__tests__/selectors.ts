@@ -202,12 +202,28 @@ describe('Movies selectors', () => {
   });
 
   describe('selectMovieById', () => {
-    const selectMovieById = makeSelectMovieById('1');
-
     it('should return null, if no movies', () => {
+      const selectMovieById = makeSelectMovieById('1');
+
       expect(selectMovieById(mockStore)).toEqual(null);
     });
 
-    it('should return movie, if movies', () => {});
+    it('should return movie, if movies', () => {
+      const selectMovieById = makeSelectMovieById('1');
+
+      expect(selectMovieById(storeWithMovies)).toEqual(movie1);
+    });
+
+    it('should return null, if id not correct', () => {
+      const selectMovieById = makeSelectMovieById('sadf');
+
+      expect(selectMovieById(storeWithMovies)).toEqual(null);
+    });
+
+    it('should return null, if no id', () => {
+      const selectMovieById = makeSelectMovieById();
+
+      expect(selectMovieById(storeWithMovies)).toEqual(null);
+    });
   });
 });

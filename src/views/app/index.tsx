@@ -14,7 +14,6 @@ export const App = () => {
     <>
       {!videoPlayerFullscreen.visible &&
         routes.map((route, index) => <AppRoute {...route} key={index} />)}
-
       <VideoPlayerFullscreen
         visible={videoPlayerFullscreen.visible}
         name={videoPlayerFullscreen.data?.name}

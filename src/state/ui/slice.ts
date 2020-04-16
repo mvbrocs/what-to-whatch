@@ -20,6 +20,7 @@ type State = {
 };
 
 export const ALL_GENRES = 'All genres';
+export const MAX_VISIBLE_MOVIES = 8;
 
 export const uiInitialState = {
   isAuthorizationRequired: false,
@@ -28,7 +29,7 @@ export const uiInitialState = {
     visible: false,
     data: null,
   },
-  maxVisibleMovies: 8,
+  maxVisibleMovies: MAX_VISIBLE_MOVIES,
 } as State;
 
 export const slice = createSlice({
@@ -50,8 +51,8 @@ export const slice = createSlice({
     ) {
       state.videoPlayerFullscreen.data = action.payload;
     },
-    incrementMaxVisibleMovies(state, action: PayloadAction<number>) {
-      state.maxVisibleMovies += action.payload;
+    setMaxVisibleMovies(state, action: PayloadAction<number>) {
+      state.maxVisibleMovies = action.payload;
     },
   },
 });

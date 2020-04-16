@@ -6,7 +6,7 @@ import {
   setGenre,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-  incrementMaxVisibleMovies,
+  setMaxVisibleMovies,
 } from 'src/state/ui/actions';
 
 describe('UI slice', () => {
@@ -54,11 +54,11 @@ describe('UI slice', () => {
 
     it('should create action incrementMaxVisibleMovies', () => {
       const expectedAction = {
-        type: 'ui/incrementMaxVisibleMovies',
+        type: 'ui/setMaxVisibleMovies',
         payload: 2,
       };
 
-      expect(incrementMaxVisibleMovies(2)).toEqual(expectedAction);
+      expect(setMaxVisibleMovies(2)).toEqual(expectedAction);
     });
   });
 
@@ -121,11 +121,11 @@ describe('UI slice', () => {
 
     it('should incrementMaxVisibleMovies', () => {
       const action = {
-        type: 'ui/incrementMaxVisibleMovies',
+        type: 'ui/setMaxVisibleMovies',
         payload: 2,
       };
       const expectedState = createNextState(uiInitialState, (draft) => {
-        draft.maxVisibleMovies += action.payload;
+        draft.maxVisibleMovies = action.payload;
       });
 
       expect(uiReducer(undefined, action)).toEqual(expectedState);

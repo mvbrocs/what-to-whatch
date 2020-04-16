@@ -1,21 +1,21 @@
 import React from 'react';
-import { RouteProps } from 'react-router-dom';
 
 import { TabPane, Tabs, MovieList, Header, Logo, UserBlock } from 'src/views/components';
-import { mockFilms } from 'src/mocks';
+import { formatRunTime } from './format-run-time';
 import { useMovie } from './use-movie';
 
-type MovieProps = RouteProps;
-
-export const Movie = (props: MovieProps) => {
-  useMovie();
+export const Movie = () => {
+  const { movie, movies } = useMovie();
 
   return (
     <>
-      <section className="movie-card movie-card--full">
+      <section
+        className="movie-card movie-card--full"
+        style={{ backgroundColor: movie?.background_color }}
+      >
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={movie?.background_image} alt={movie?.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -26,10 +26,10 @@ export const Movie = (props: MovieProps) => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{movie?.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{movie?.genre}</span>
+                <span className="movie-card__year">{movie?.released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -47,9 +47,9 @@ export const Movie = (props: MovieProps) => {
                 {/*  <span>My list</span>*/}
                 {/*</button>*/}
 
-                <a href="add-review.html" className="btn movie-card__button">
-                  Add review
-                </a>
+                {/*<a href="add-review.html" className="btn movie-card__button">*/}
+                {/*  Add review*/}
+                {/*</a>*/}
               </div>
             </div>
           </div>
@@ -58,47 +58,29 @@ export const Movie = (props: MovieProps) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
-                width="218"
-                height="327"
-              />
+              <img src={movie?.poster_image} alt={movie?.name} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
               <Tabs>
                 <TabPane tab="Overview" index="1">
                   <div className="movie-rating">
-                    <div className="movie-rating__score">8,9</div>
+                    <div className="movie-rating__score">{movie?.rating}</div>
                     <p className="movie-rating__meta">
                       <span className="movie-rating__level">Very good</span>
-                      <span className="movie-rating__count">240 ratings</span>
+                      <span className="movie-rating__count">{movie?.scores_count} ratings</span>
                     </p>
                   </div>
 
                   <div className="movie-card__text">
-                    <p>
-                      In the 1930s, the Grand Budapest Hotel is a popular European ski resort,
-                      presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby
-                      boy, becomes Gustave's friend and protege.
-                    </p>
-
-                    <p>
-                      Gustave prides himself on providing first-class service to the hotel's guests,
-                      including satisfying the sexual needs of the many elderly women who stay
-                      there. When one of Gustave's lovers dies mysteriously, Gustave finds himself
-                      the recipient of a priceless painting and the chief suspect in her murder.
-                    </p>
+                    <p>{movie?.description}</p>
 
                     <p className="movie-card__director">
-                      <strong>Director: Wes Andreson</strong>
+                      <strong>Director: {movie?.director}</strong>
                     </p>
 
                     <p className="movie-card__starring">
-                      <strong>
-                        Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other
-                      </strong>
+                      <strong>Starring: {movie?.starring.join(', ')} and other</strong>
                     </p>
                   </div>
                 </TabPane>
@@ -108,23 +90,16 @@ export const Movie = (props: MovieProps) => {
                     <div className="movie-card__text-col">
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Director</strong>
-                        <span className="movie-card__details-value">Wes Andreson</span>
+                        <span className="movie-card__details-value">{movie?.director}</span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Starring</strong>
                         <span className="movie-card__details-value">
-                          Bill Murray, <br />
-                          Edward Norton, <br />
-                          Jude Law, <br />
-                          Willem Dafoe, <br />
-                          Saoirse Ronan, <br />
-                          Tony Revoloru, <br />
-                          Tilda Swinton, <br />
-                          Tom Wilkinson, <br />
-                          Owen Wilkinson, <br />
-                          Adrien Brody, <br />
-                          Ralph Fiennes, <br />
-                          Jeff Goldblum
+                          {movie?.starring.map((movie) => (
+                            <>
+                              {movie}, <br />
+                            </>
+                          ))}
                         </span>
                       </p>
                     </div>
@@ -132,15 +107,17 @@ export const Movie = (props: MovieProps) => {
                     <div className="movie-card__text-col">
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Run Time</strong>
-                        <span className="movie-card__details-value">1h 39m</span>
+                        <span className="movie-card__details-value">
+                          {formatRunTime(movie?.run_time)}
+                        </span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Genre</strong>
-                        <span className="movie-card__details-value">Comedy</span>
+                        <span className="movie-card__details-value">{movie?.genre}</span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Released</strong>
-                        <span className="movie-card__details-value">2014</span>
+                        <span className="movie-card__details-value">{movie?.released}</span>
                       </p>
                     </div>
                   </div>
@@ -270,11 +247,13 @@ export const Movie = (props: MovieProps) => {
       </section>
 
       <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
+        {Boolean(movies.length) && (
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
 
-          <MovieList movies={mockFilms} />
-        </section>
+            <MovieList movies={movies} />
+          </section>
+        )}
 
         <footer className="page-footer">
           <Logo light />

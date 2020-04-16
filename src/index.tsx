@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import './assets/style.min.css';
 import { store } from './state/store';
 import { history } from './state/history';
+import './assets/style.min.css';
 
 const render = () => {
   const App = require('./views/app').App;

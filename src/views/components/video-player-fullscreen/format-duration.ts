@@ -1,5 +1,6 @@
+import { MIN_IN_HR } from 'src/views/utils';
+
 const SEC_IN_MIN = 60;
-const MIN_IN_HR = 60;
 
 export const addZero = (num: number) => (num.toString().length === 1 ? `0${num}` : `${num}`);
 
