@@ -13,14 +13,16 @@ const UserBlock = ({ user }: UserBlockProps) => {
   return (
     <div className="user-block">
       {user ? (
-        <div className="user-block__avatar">
-          <img
-            src={api.BASE_URL.replace(/wtw/, user.avatar_url)}
-            alt="IUser avatar"
-            width="63"
-            height="63"
-          />
-        </div>
+        <Link to={Path.MY_LIST}>
+          <div className="user-block__avatar">
+            <img
+              src={api.BASE_URL.replace(/wtw/, user.avatar_url)}
+              alt="IUser avatar"
+              width="63"
+              height="63"
+            />
+          </div>
+        </Link>
       ) : (
         <Link to={Path.SIGN_IN} className="user-block__link">
           Sign in

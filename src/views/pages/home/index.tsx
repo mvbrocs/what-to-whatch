@@ -4,7 +4,7 @@ import { MovieList, GenresList, Header, UserBlock, Logo, Btn } from 'src/views/c
 import { PlaySIcon } from 'src/views/icons';
 import { useHome } from './use-home';
 
-export const Home = () => {
+const Home = () => {
   const {
     genres,
     activeGenre,
@@ -98,3 +98,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Header, Logo } from 'src/views/components';
 import { useSignIn } from './use-sign-in';
 
-export const SignIn = () => {
+const SignIn = () => {
   const { formik } = useSignIn();
 
   return (
@@ -64,3 +64,5 @@ export const SignIn = () => {
     </div>
   );
 };
+
+export default SignIn;

@@ -4,7 +4,7 @@ import { TabPane, Tabs, MovieList, Header, Logo, UserBlock } from 'src/views/com
 import { formatRunTime } from './format-run-time';
 import { useMovie } from './use-movie';
 
-export const Movie = () => {
+const Movie = () => {
   const { mainMovie, moviesByGenre, user } = useMovie();
 
   return (
@@ -266,3 +266,5 @@ export const Movie = () => {
     </>
   );
 };
+
+export default Movie;

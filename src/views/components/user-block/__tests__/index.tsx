@@ -8,7 +8,7 @@ describe('UserBlock', () => {
   it('should render SignIn if no user', () => {
     const userBlock = shallow(<UserBlock user={null} />);
 
-    expect(userBlock.find('Link').text()).toEqual('Sign in');
+    expect(userBlock.find('.user-block__link')).toHaveLength(1);
     expect(userBlock.find('.user-block__avatar')).toHaveLength(0);
   });
 
@@ -22,6 +22,6 @@ describe('UserBlock', () => {
     const userBlock = shallow(<UserBlock user={user} />);
 
     expect(userBlock.find('.user-block__avatar')).toHaveLength(1);
-    expect(userBlock.find('Link')).toHaveLength(0);
+    expect(userBlock.find('.user-block__link')).toHaveLength(0);
   });
 });
