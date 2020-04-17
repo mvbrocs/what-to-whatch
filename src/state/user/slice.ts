@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { login } from './actions';
-import { User } from 'src/api/login';
+import { IUser } from 'src/api/login';
 
-type State = null | User;
+type State = IUser | null;
 
 export const userInitialState = null as State;
 

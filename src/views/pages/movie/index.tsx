@@ -5,7 +5,7 @@ import { formatRunTime } from './format-run-time';
 import { useMovie } from './use-movie';
 
 export const Movie = () => {
-  const { mainMovie, moviesByGenre } = useMovie();
+  const { mainMovie, moviesByGenre, user } = useMovie();
 
   return (
     <>
@@ -21,7 +21,7 @@ export const Movie = () => {
           <h1 className="visually-hidden">WTW</h1>
 
           <Header className="movie-card__head">
-            <UserBlock />
+            <UserBlock user={user} />
           </Header>
 
           <div className="movie-card__wrap">

@@ -2,19 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Path } from 'src/routes';
-import { useUserBlock } from './use-user-block';
 import { api } from 'src/api';
+import { IUser } from 'src/api/login';
 
-const UserBlock = () => {
-  const { user } = useUserBlock();
+type UserBlockProps = {
+  user: IUser | null;
+};
 
+const UserBlock = ({ user }: UserBlockProps) => {
   return (
     <div className="user-block">
       {user ? (
         <div className="user-block__avatar">
           <img
             src={api.BASE_URL.replace(/wtw/, user.avatar_url)}
-            alt="User avatar"
+            alt="IUser avatar"
             width="63"
             height="63"
           />

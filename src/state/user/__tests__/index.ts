@@ -1,7 +1,7 @@
 import { mockStore } from 'src/mocks';
 import { userReducer } from 'src/state/user/slice';
 import { selectUser } from 'src/state/user//selectors';
-import { User } from 'src/api/login';
+import { IUser } from 'src/api/login';
 
 describe('UI state', () => {
   describe('reducer', () => {
@@ -19,7 +19,7 @@ describe('UI state', () => {
         email: 'ivanov@gmail.com',
         name: 'ivanov',
         avatar_url: 'img',
-      } as User;
+      } as IUser;
       const action = {
         type: 'user/login/fulfilled',
         payload: user,

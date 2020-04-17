@@ -5,11 +5,11 @@ export type Credentials = {
   password: string;
 };
 
-export type User = {
+export type IUser = {
   id: number;
   email: string;
   name: string;
   avatar_url: string;
 };
 
-export const loginAPI = (credentials: Credentials) => appAxios.post<User>('/login', credentials);
+export const loginAPI = (credentials: Credentials) => appAxios.post<IUser>('/login', credentials);

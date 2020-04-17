@@ -15,6 +15,7 @@ import { GenreClickHandler } from 'src/views/components/genres-list';
 import { ALL_GENRES } from 'src/state/ui/slice';
 import { useFetchMovies } from 'src/views/pages/hooks';
 import { getMoviesByGenre } from 'src/views/pages/utils';
+import { selectUser } from 'src/state/user/selectors';
 
 const START_MAX_VISIBLE_MOVIES = 8;
 const STEP_MAX_VISIBLE_MOVIES = 20;
@@ -29,6 +30,7 @@ export const useHome = () => {
   const moviesByGenre = getMoviesByGenre(movies, activeGenre);
   const moviesByGenreAndMaxVisible = moviesByGenre.slice(0, maxVisibleMovies);
   const allMoviesIsVisible = moviesByGenre.length === moviesByGenreAndMaxVisible.length;
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   const genreClickHandler: GenreClickHandler = (genre) => (event) => {
@@ -64,6 +66,7 @@ export const useHome = () => {
     moviesLoaded,
     allMoviesIsVisible,
     mainMovie,
+    user,
     genreClickHandler,
     btnShowMoreClickHandler,
     btnPlayClickHandler,

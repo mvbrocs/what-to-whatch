@@ -12,6 +12,7 @@ export const Home = () => {
     moviesLoaded,
     allMoviesIsVisible,
     mainMovie,
+    user,
     genreClickHandler,
     btnShowMoreClickHandler,
     btnPlayClickHandler,
@@ -28,7 +29,7 @@ export const Home = () => {
           <h1 className="visually-hidden">WTW</h1>
 
           <Header className="movie-card__head">
-            <UserBlock />
+            <UserBlock user={user} />
           </Header>
 
           <div className="movie-card__wrap">
