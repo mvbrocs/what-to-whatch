@@ -5,6 +5,7 @@ import { VideoPlayerFullscreen } from 'src/views/components';
 import { routes } from 'src/routes';
 import { useApp } from './use-app';
 
+// for key prop
 const AppRoute = (props: RouteProps) => <Route {...props} />;
 
 export const App = () => {

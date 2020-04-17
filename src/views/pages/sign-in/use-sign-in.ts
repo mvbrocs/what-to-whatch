@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { goBack } from 'connected-react-router';
 
 import { login } from 'src/state/user/actions';
 
@@ -12,6 +13,7 @@ export const useSignIn = () => {
     },
     onSubmit: (values) => {
       dispatch(login(values));
+      dispatch(goBack());
     },
   });
 

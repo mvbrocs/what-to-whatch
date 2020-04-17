@@ -1,27 +1,19 @@
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { setGenre } from 'src/state/ui/actions';
-import { fetchMovies } from 'src/state/movies/actions';
-import {
-  makeSelectMovieById,
-  selectMoviesByGenre,
-  selectMoviesSlice,
-} from 'src/state/movies/selectors';
+import { selectAllMovies } from 'src/state/movies/selectors';
+import { useFetchMovies } from 'src/views/pages/hooks';
+import { getMoviesByGenre } from 'src/views/pages/utils';
 
 export const useMovie = () => {
   const { id } = useParams();
-  const movie = useSelector(makeSelectMovieById(id));
-  const moviesSlice = useSelector(selectMoviesSlice);
-  const movies = useSelector(selectMoviesByGenre).filter((movieEl) => movieEl.id !== movie?.id);
+  const movies = useSelector(selectAllMovies);
+  const mainMovie = movies.find((movie) => movie.id.toString() === id);
+  const moviesByGenre = getMoviesByGenre(movies, mainMovie?.genre).filter(
+    (movie) => movie.id !== mainMovie?.id,
+  );
 
-  const dispatch = useDispatch();
+  useFetchMovies();
 
-  useEffect(() => {
-    if (!moviesSlice.loaded) dispatch(fetchMovies());
-    if (movie) dispatch(setGenre(movie.genre));
-  }, [moviesSlice.loaded, movie, dispatch]);
-
-  return { movie, movies };
+  return { mainMovie, moviesByGenre };
 };

@@ -1,43 +1,45 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchMovies } from 'src/state/movies/actions';
 import {
   selectAllGenres,
-  selectMoviesByGenreAndMaxVisible,
   selectMoviesSlice,
-  selectAllMoviesIsVisible,
   selectMovieByRandom,
+  selectAllMovies,
 } from 'src/state/movies/selectors';
 import {
-  setGenre,
-  setMaxVisibleMovies,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
 } from 'src/state/ui/actions';
-import { selectGenre, selectMaxVisibleMovies } from 'src/state/ui/selectors';
 import { GenreClickHandler } from 'src/views/components/genres-list';
-import { ALL_GENRES, MAX_VISIBLE_MOVIES } from 'src/state/ui/slice';
+import { ALL_GENRES } from 'src/state/ui/slice';
+import { useFetchMovies } from 'src/views/pages/hooks';
+import { getMoviesByGenre } from 'src/views/pages/utils';
+
+const START_MAX_VISIBLE_MOVIES = 8;
+const STEP_MAX_VISIBLE_MOVIES = 20;
 
 export const useHome = () => {
   const genres = useSelector(selectAllGenres);
-  const activeGenre = useSelector(selectGenre);
-  const movies = useSelector(selectMoviesByGenreAndMaxVisible);
-  const allMoviesIsVisible = useSelector(selectAllMoviesIsVisible);
-  const maxVisibleMovies = useSelector(selectMaxVisibleMovies);
-  const { loaded: moviesLoaded, loading: moviesLoading } = useSelector(selectMoviesSlice);
+  const [activeGenre, setActiveGenre] = useState(ALL_GENRES);
+  const [maxVisibleMovies, setMaxVisibleMovies] = useState(START_MAX_VISIBLE_MOVIES);
+  const { loaded: moviesLoaded } = useSelector(selectMoviesSlice);
   const mainMovie = useSelector(selectMovieByRandom);
+  const movies = useSelector(selectAllMovies);
+  const moviesByGenre = getMoviesByGenre(movies, activeGenre);
+  const moviesByGenreAndMaxVisible = moviesByGenre.slice(0, maxVisibleMovies);
+  const allMoviesIsVisible = moviesByGenre.length === moviesByGenreAndMaxVisible.length;
   const dispatch = useDispatch();
 
   const genreClickHandler: GenreClickHandler = (genre) => (event) => {
     event.preventDefault();
+    setActiveGenre(genre);
 
-    dispatch(setGenre(genre));
-
-    if (maxVisibleMovies > MAX_VISIBLE_MOVIES) dispatch(setMaxVisibleMovies(MAX_VISIBLE_MOVIES));
+    if (maxVisibleMovies > START_MAX_VISIBLE_MOVIES) setMaxVisibleMovies(START_MAX_VISIBLE_MOVIES);
   };
 
-  const btnShowMoreClickHandler = () => dispatch(setMaxVisibleMovies(maxVisibleMovies + 20));
+  const btnShowMoreClickHandler = () =>
+    setMaxVisibleMovies((prevMax) => prevMax + STEP_MAX_VISIBLE_MOVIES);
 
   const btnPlayClickHandler = () => {
     dispatch(
@@ -53,20 +55,12 @@ export const useHome = () => {
     dispatch(toggleVideoPlayerFullscreenVisible());
   };
 
-  useEffect(() => {
-    if (activeGenre !== ALL_GENRES) dispatch(setGenre(ALL_GENRES));
-    // change to default genre, when come from another page
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (!moviesLoaded && !moviesLoading) dispatch(fetchMovies());
-  }, [dispatch, moviesLoaded, moviesLoading]);
+  useFetchMovies();
 
   return {
     genres,
     activeGenre,
-    movies,
+    moviesByGenreAndMaxVisible,
     moviesLoaded,
     allMoviesIsVisible,
     mainMovie,

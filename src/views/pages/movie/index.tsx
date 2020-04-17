@@ -5,17 +5,17 @@ import { formatRunTime } from './format-run-time';
 import { useMovie } from './use-movie';
 
 export const Movie = () => {
-  const { movie, movies } = useMovie();
+  const { mainMovie, moviesByGenre } = useMovie();
 
   return (
     <>
       <section
         className="movie-card movie-card--full"
-        style={{ backgroundColor: movie?.background_color }}
+        style={{ backgroundColor: mainMovie?.background_color }}
       >
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={movie?.background_image} alt={movie?.name} />
+            <img src={mainMovie?.background_image} alt={mainMovie?.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -26,10 +26,10 @@ export const Movie = () => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{movie?.name}</h2>
+              <h2 className="movie-card__title">{mainMovie?.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{movie?.genre}</span>
-                <span className="movie-card__year">{movie?.released}</span>
+                <span className="movie-card__genre">{mainMovie?.genre}</span>
+                <span className="movie-card__year">{mainMovie?.released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -58,29 +58,29 @@ export const Movie = () => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={movie?.poster_image} alt={movie?.name} width="218" height="327" />
+              <img src={mainMovie?.poster_image} alt={mainMovie?.name} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
               <Tabs>
                 <TabPane tab="Overview" index="1">
                   <div className="movie-rating">
-                    <div className="movie-rating__score">{movie?.rating}</div>
+                    <div className="movie-rating__score">{mainMovie?.rating}</div>
                     <p className="movie-rating__meta">
                       <span className="movie-rating__level">Very good</span>
-                      <span className="movie-rating__count">{movie?.scores_count} ratings</span>
+                      <span className="movie-rating__count">{mainMovie?.scores_count} ratings</span>
                     </p>
                   </div>
 
                   <div className="movie-card__text">
-                    <p>{movie?.description}</p>
+                    <p>{mainMovie?.description}</p>
 
                     <p className="movie-card__director">
-                      <strong>Director: {movie?.director}</strong>
+                      <strong>Director: {mainMovie?.director}</strong>
                     </p>
 
                     <p className="movie-card__starring">
-                      <strong>Starring: {movie?.starring.join(', ')} and other</strong>
+                      <strong>Starring: {mainMovie?.starring.join(', ')} and other</strong>
                     </p>
                   </div>
                 </TabPane>
@@ -90,14 +90,14 @@ export const Movie = () => {
                     <div className="movie-card__text-col">
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Director</strong>
-                        <span className="movie-card__details-value">{movie?.director}</span>
+                        <span className="movie-card__details-value">{mainMovie?.director}</span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Starring</strong>
                         <span className="movie-card__details-value">
-                          {movie?.starring.map((movie) => (
+                          {mainMovie?.starring.map((mainMovie) => (
                             <>
-                              {movie}, <br />
+                              {mainMovie}, <br />
                             </>
                           ))}
                         </span>
@@ -108,16 +108,16 @@ export const Movie = () => {
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Run Time</strong>
                         <span className="movie-card__details-value">
-                          {formatRunTime(movie?.run_time)}
+                          {formatRunTime(mainMovie?.run_time)}
                         </span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Genre</strong>
-                        <span className="movie-card__details-value">{movie?.genre}</span>
+                        <span className="movie-card__details-value">{mainMovie?.genre}</span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Released</strong>
-                        <span className="movie-card__details-value">{movie?.released}</span>
+                        <span className="movie-card__details-value">{mainMovie?.released}</span>
                       </p>
                     </div>
                   </div>
@@ -131,7 +131,7 @@ export const Movie = () => {
                           <p className="review__text">
                             Discerning travellers and Wes Anderson fans will luxuriate in the
                             glorious Mittel-European kitsch of one of the director's funniest and
-                            most exquisitely designed movies in years.
+                            most exquisitely designed moviesByGenreAndMaxVisible in years.
                           </p>
 
                           <footer className="review__details">
@@ -247,11 +247,11 @@ export const Movie = () => {
       </section>
 
       <div className="page-content">
-        {Boolean(movies.length) && (
+        {Boolean(moviesByGenre.length) && (
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <MovieList movies={movies} />
+            <MovieList movies={moviesByGenre} />
           </section>
         )}
 

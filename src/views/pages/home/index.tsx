@@ -8,7 +8,7 @@ export const Home = () => {
   const {
     genres,
     activeGenre,
-    movies,
+    moviesByGenreAndMaxVisible,
     moviesLoaded,
     allMoviesIsVisible,
     mainMovie,
@@ -73,7 +73,7 @@ export const Home = () => {
                 activeGenre={activeGenre}
                 onGenreClick={genreClickHandler}
               />
-              <MovieList movies={movies} />
+              <MovieList movies={moviesByGenreAndMaxVisible} />
             </>
           )}
 

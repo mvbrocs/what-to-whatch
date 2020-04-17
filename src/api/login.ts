@@ -12,4 +12,4 @@ export type User = {
   avatar_url: string;
 };
 
-export const loginAPI = (data: Credentials) => appAxios.post<User>('/login', data);
+export const loginAPI = (credentials: Credentials) => appAxios.post<User>('/login', credentials);
