@@ -3,20 +3,19 @@ import { Link } from 'react-router-dom';
 
 import { Path } from 'src/routes';
 import { api } from 'src/api';
-import { IUser } from 'src/api/login';
 
 type UserBlockProps = {
-  user: IUser | null;
+  avatarURL?: string;
 };
 
-const UserBlock = ({ user }: UserBlockProps) => {
+const UserBlock = ({ avatarURL }: UserBlockProps) => {
   return (
     <div className="user-block">
-      {user ? (
+      {avatarURL ? (
         <Link to={Path.MY_LIST}>
           <div className="user-block__avatar">
             <img
-              src={api.BASE_URL.replace(/wtw/, user.avatar_url)}
+              src={api.BASE_URL.replace(/wtw/, avatarURL)}
               alt="IUser avatar"
               width="63"
               height="63"

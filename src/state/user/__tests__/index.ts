@@ -24,8 +24,12 @@ describe('UI state', () => {
         type: 'user/login/fulfilled',
         payload: user,
       };
+      const expectedState = {
+        ...user,
+        movies: [],
+      };
 
-      expect(userReducer(undefined, action)).toEqual(user);
+      expect(userReducer(undefined, action)).toEqual(expectedState);
     });
   });
 

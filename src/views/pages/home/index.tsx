@@ -29,7 +29,7 @@ const Home = () => {
           <h1 className="visually-hidden">WTW</h1>
 
           <Header className="movie-card__head">
-            <UserBlock user={user} />
+            <UserBlock avatarURL={user?.avatar_url} />
           </Header>
 
           <div className="movie-card__wrap">

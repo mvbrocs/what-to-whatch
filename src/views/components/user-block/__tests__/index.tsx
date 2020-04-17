@@ -5,8 +5,8 @@ import { UserBlock } from 'src/views/components';
 import { IUser } from 'src/api/login';
 
 describe('UserBlock', () => {
-  it('should render SignIn if no user', () => {
-    const userBlock = shallow(<UserBlock user={null} />);
+  it('should render SignIn if no avatarURL', () => {
+    const userBlock = shallow(<UserBlock />);
 
     expect(userBlock.find('.user-block__link')).toHaveLength(1);
     expect(userBlock.find('.user-block__avatar')).toHaveLength(0);
@@ -19,7 +19,7 @@ describe('UserBlock', () => {
       id: 1,
       name: 'name',
     } as IUser;
-    const userBlock = shallow(<UserBlock user={user} />);
+    const userBlock = shallow(<UserBlock avatarURL={user.avatar_url} />);
 
     expect(userBlock.find('.user-block__avatar')).toHaveLength(1);
     expect(userBlock.find('.user-block__link')).toHaveLength(0);
