@@ -8,11 +8,11 @@ import {
   selectAllMovies,
 } from 'src/state/movies/selectors';
 import {
+  ALL_GENRES,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-} from 'src/state/ui/actions';
+} from 'src/state/ui/slice';
 import { GenreClickHandler } from 'src/views/components/genres-list';
-import { ALL_GENRES } from 'src/state/ui/slice';
 import { useFetchMovies } from 'src/views/pages/hooks';
 import { getMoviesByGenre } from 'src/views/pages/utils';
 import { selectUser } from 'src/state/user/selectors';
@@ -57,6 +57,8 @@ export const useHome = () => {
     dispatch(toggleVideoPlayerFullscreenVisible());
   };
 
+  const btnAddClickHandler = () => {};
+
   useFetchMovies();
 
   return {
@@ -70,5 +72,6 @@ export const useHome = () => {
     genreClickHandler,
     btnShowMoreClickHandler,
     btnPlayClickHandler,
+    btnAddClickHandler,
   };
 };

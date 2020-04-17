@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MovieList, GenresList, Header, UserBlock, Logo, Btn } from 'src/views/components';
-import { PlaySIcon } from 'src/views/icons';
+import { PlaySIcon, AddIcon } from 'src/views/icons';
 import { useHome } from './use-home';
 
 const Home = () => {
@@ -16,6 +16,7 @@ const Home = () => {
     genreClickHandler,
     btnShowMoreClickHandler,
     btnPlayClickHandler,
+    btnAddClickHandler,
   } = useHome();
 
   return (
@@ -50,12 +51,11 @@ const Home = () => {
                     <PlaySIcon />
                     <span>Play</span>
                   </Btn>
-                  {/*<button className="btn btn--list movie-card__button" type="button">*/}
-                  {/*  <svg viewBox="0 0 19 20" width="19" height="20">*/}
-                  {/*    <use xlinkHref="#add" />*/}
-                  {/*  </svg>*/}
-                  {/*  <span>My list</span>*/}
-                  {/*</button>*/}
+
+                  <Btn onClick={btnAddClickHandler}>
+                    <AddIcon />
+                    <span>My list</span>
+                  </Btn>
                 </div>
               </div>
             </div>

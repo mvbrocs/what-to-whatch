@@ -1,20 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { login } from './actions';
-import { IUser } from 'src/api/login';
+import { Credentials, IUser } from 'src/api/login';
+import { api } from 'src/api';
 
 type User = IUser & {
   movies: number[];
 };
 
-type State = User | null;
+export type UserState = User | null;
 
-export const userInitialState = null as State;
+export const login = createAsyncThunk('user/login', async (credentials: Credentials) => {
+  const { data } = await api.login(credentials);
+
+  return data;
+});
+
+export const userInitialState = null as UserState;
 
 const slice = createSlice({
   name: 'user',
   initialState: userInitialState,
-  reducers: {},
+  reducers: {
+    addMovie(state, action: PayloadAction<number>) {
+      state?.movies.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       const { avatar_url, email, id, name } = action.payload;
@@ -30,4 +40,5 @@ const slice = createSlice({
   },
 });
 
+export const { addMovie } = slice.actions;
 export const userReducer = slice.reducer;

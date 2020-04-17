@@ -46,4 +46,9 @@ export const slice = createSlice({
   },
 });
 
+export const {
+  toggleAuthorizationRequired,
+  toggleVideoPlayerFullscreenVisible,
+  updateVideoPlayerFullscreenData,
+} = slice.actions;
 export const uiReducer = slice.reducer;

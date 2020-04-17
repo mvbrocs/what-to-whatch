@@ -1,11 +1,12 @@
 import { createNextState } from '@reduxjs/toolkit';
 
-import { uiInitialState, uiReducer } from 'src/state/ui/slice';
 import {
+  uiInitialState,
+  uiReducer,
   toggleAuthorizationRequired,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-} from 'src/state/ui/actions';
+} from 'src/state/ui/slice';
 
 describe('UI slice', () => {
   describe('actions', () => {

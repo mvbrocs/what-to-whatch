@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchMovies } from 'src/state/movies/actions';
+import { fetchMovies } from 'src/state/movies/slice';
 import { selectMoviesSlice } from 'src/state/movies/selectors';
 
 export const useFetchMovies = () => {
