@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Credentials, IUser } from 'src/api/login';
 import { api } from 'src/api';
+import { RootState } from '../root-reducer';
 
 type User = IUser & {
   movies: number[];
@@ -21,8 +22,12 @@ const slice = createSlice({
   name: 'user',
   initialState: userInitialState,
   reducers: {
-    addMovie(state, action: PayloadAction<number>) {
-      state?.movies.push(action.payload);
+    addMovieToUserList(state, action: PayloadAction<number>) {
+      if (state) state.movies.push(action.payload);
+    },
+    removeMovieFromUserList(state, action: PayloadAction<number>) {
+      if (state)
+        state.movies = state.movies.filter((movieId) => movieId !== action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -40,5 +45,7 @@ const slice = createSlice({
   },
 });
 
-export const { addMovie } = slice.actions;
+export const { addMovieToUserList, removeMovieFromUserList } = slice.actions;
 export const userReducer = slice.reducer;
+
+export const selectUser = (state: RootState) => state.user;

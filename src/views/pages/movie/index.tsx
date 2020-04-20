@@ -4,6 +4,16 @@ import { TabPane, Tabs, MovieList, Header, Logo, UserBlock } from 'src/views/com
 import { formatRunTime } from './format-run-time';
 import { useMovie } from './use-movie';
 
+type MovieCardDetailsValueProps = {
+  actor: string;
+};
+
+const MovieCardDetailsValue = ({ actor }: MovieCardDetailsValueProps) => (
+  <>
+    {actor}, <br />
+  </>
+);
+
 const Movie = () => {
   const { mainMovie, moviesByGenre, user } = useMovie();
 
@@ -58,7 +68,12 @@ const Movie = () => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={mainMovie?.poster_image} alt={mainMovie?.name} width="218" height="327" />
+              <img
+                src={mainMovie?.poster_image}
+                alt={mainMovie?.name}
+                width="218"
+                height="327"
+              />
             </div>
 
             <div className="movie-card__desc">
@@ -68,7 +83,9 @@ const Movie = () => {
                     <div className="movie-rating__score">{mainMovie?.rating}</div>
                     <p className="movie-rating__meta">
                       <span className="movie-rating__level">Very good</span>
-                      <span className="movie-rating__count">{mainMovie?.scores_count} ratings</span>
+                      <span className="movie-rating__count">
+                        {mainMovie?.scores_count} ratings
+                      </span>
                     </p>
                   </div>
 
@@ -80,7 +97,9 @@ const Movie = () => {
                     </p>
 
                     <p className="movie-card__starring">
-                      <strong>Starring: {mainMovie?.starring.join(', ')} and other</strong>
+                      <strong>
+                        Starring: {mainMovie?.starring.join(', ')} and other
+                      </strong>
                     </p>
                   </div>
                 </TabPane>
@@ -90,15 +109,15 @@ const Movie = () => {
                     <div className="movie-card__text-col">
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Director</strong>
-                        <span className="movie-card__details-value">{mainMovie?.director}</span>
+                        <span className="movie-card__details-value">
+                          {mainMovie?.director}
+                        </span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Starring</strong>
                         <span className="movie-card__details-value">
-                          {mainMovie?.starring.map((mainMovie) => (
-                            <>
-                              {mainMovie}, <br />
-                            </>
+                          {mainMovie?.starring.map((actor, index) => (
+                            <MovieCardDetailsValue actor={actor} key={index} />
                           ))}
                         </span>
                       </p>
@@ -113,11 +132,15 @@ const Movie = () => {
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Genre</strong>
-                        <span className="movie-card__details-value">{mainMovie?.genre}</span>
+                        <span className="movie-card__details-value">
+                          {mainMovie?.genre}
+                        </span>
                       </p>
                       <p className="movie-card__details-item">
                         <strong className="movie-card__details-name">Released</strong>
-                        <span className="movie-card__details-value">{mainMovie?.released}</span>
+                        <span className="movie-card__details-value">
+                          {mainMovie?.released}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -129,9 +152,10 @@ const Movie = () => {
                       <div className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">
-                            Discerning travellers and Wes Anderson fans will luxuriate in the
-                            glorious Mittel-European kitsch of one of the director's funniest and
-                            most exquisitely designed moviesByGenreAndMaxVisible in years.
+                            Discerning travellers and Wes Anderson fans will luxuriate in
+                            the glorious Mittel-European kitsch of one of the director's
+                            funniest and most exquisitely designed
+                            moviesByGenreAndMaxVisible in years.
                           </p>
 
                           <footer className="review__details">
@@ -148,10 +172,10 @@ const Movie = () => {
                       <div className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">
-                            Anderson's films are too precious for some, but for those of us willing
-                            to lose ourselves in them, they're a delight. "The Grand Budapest Hotel"
-                            is no different, except that he has added a hint of gravitas to the mix,
-                            improving the recipe.
+                            Anderson's films are too precious for some, but for those of
+                            us willing to lose ourselves in them, they're a delight. "The
+                            Grand Budapest Hotel" is no different, except that he has
+                            added a hint of gravitas to the mix, improving the recipe.
                           </p>
 
                           <footer className="review__details">
@@ -168,8 +192,9 @@ const Movie = () => {
                       <div className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">
-                            I didn't find it amusing, and while I can appreciate the creativity,
-                            it's an hour and 40 minutes I wish I could take back.
+                            I didn't find it amusing, and while I can appreciate the
+                            creativity, it's an hour and 40 minutes I wish I could take
+                            back.
                           </p>
 
                           <footer className="review__details">
@@ -187,8 +212,9 @@ const Movie = () => {
                       <div className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">
-                            The mannered, madcap proceedings are often delightful, occasionally
-                            silly, and here and there, gruesome and/or heartbreaking.
+                            The mannered, madcap proceedings are often delightful,
+                            occasionally silly, and here and there, gruesome and/or
+                            heartbreaking.
                           </p>
 
                           <footer className="review__details">
@@ -205,8 +231,8 @@ const Movie = () => {
                       <div className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">
-                            It is certainly a magical and childlike way of storytelling, even if the
-                            content is a little more adult.
+                            It is certainly a magical and childlike way of storytelling,
+                            even if the content is a little more adult.
                           </p>
 
                           <footer className="review__details">
@@ -223,8 +249,8 @@ const Movie = () => {
                       <div className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">
-                            It is certainly a magical and childlike way of storytelling, even if the
-                            content is a little more adult.
+                            It is certainly a magical and childlike way of storytelling,
+                            even if the content is a little more adult.
                           </p>
 
                           <footer className="review__details">

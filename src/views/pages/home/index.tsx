@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MovieList, GenresList, Header, UserBlock, Logo, Btn } from 'src/views/components';
-import { PlaySIcon, AddIcon } from 'src/views/icons';
+import { PlaySIcon, AddIcon, InListIcon } from 'src/views/icons';
 import { useHome } from './use-home';
 
 const Home = () => {
@@ -13,11 +13,14 @@ const Home = () => {
     allMoviesIsVisible,
     mainMovie,
     user,
+    mainMovieInList,
     genreClickHandler,
     btnShowMoreClickHandler,
     btnPlayClickHandler,
     btnAddClickHandler,
   } = useHome();
+
+  const btnAddIcon = mainMovieInList ? <InListIcon /> : <AddIcon />;
 
   return (
     <>
@@ -53,7 +56,7 @@ const Home = () => {
                   </Btn>
 
                   <Btn onClick={btnAddClickHandler}>
-                    <AddIcon />
+                    {btnAddIcon}
                     <span>My list</span>
                   </Btn>
                 </div>

@@ -4,7 +4,7 @@ import { Header, UserBlock, Logo, MovieList } from 'src/views/components';
 import { useMyList } from './use-my-list';
 
 const MyList = () => {
-  const { user } = useMyList();
+  const { user, existUserMovies } = useMyList();
 
   return (
     <div className="user-page">
@@ -17,7 +17,7 @@ const MyList = () => {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <MovieList movies={[]} />
+        <MovieList movies={existUserMovies} />
       </section>
 
       <footer className="page-footer">

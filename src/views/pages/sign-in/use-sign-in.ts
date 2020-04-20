@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { goBack } from 'connected-react-router';
 
-import { login } from 'src/state/user/slice';
+import { login } from 'src/state/slices/user';
 
 export const useSignIn = () => {
   const dispatch = useDispatch();

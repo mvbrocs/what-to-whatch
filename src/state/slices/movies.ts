@@ -1,7 +1,15 @@
-import { createAsyncThunk, createEntityAdapter, createSlice, EntityState } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createEntityAdapter,
+  createSelector,
+  createSlice,
+  EntityState,
+} from '@reduxjs/toolkit';
 
-import { IFilm } from 'src/api/films';
+import { ALL_GENRES } from 'src/state/slices/ui';
 import { api } from 'src/api';
+import { IFilm } from 'src/api/films';
+import { RootState } from 'src/state/root-reducer';
 
 type State = {
   loaded: boolean;
@@ -23,7 +31,7 @@ export const moviesInitialState = {
 
 export const moviesAdapter = createEntityAdapter<IFilm>();
 
-export const slice = createSlice({
+const slice = createSlice({
   name: 'movies',
   initialState: moviesAdapter.getInitialState(moviesInitialState),
   reducers: {},
@@ -43,3 +51,18 @@ export const slice = createSlice({
 });
 
 export const moviesReducer = slice.reducer;
+
+export const selectMoviesSlice = (state: RootState) => state.movies;
+
+export const {
+  selectAll: selectAllMovies,
+  selectById: selectMovieByID,
+} = moviesAdapter.getSelectors(selectMoviesSlice);
+
+export const selectAllGenres = createSelector(selectAllMovies, (movies) => {
+  const genres = [ALL_GENRES];
+
+  for (const movie of movies) if (!genres.includes(movie.genre)) genres.push(movie.genre);
+
+  return genres;
+});

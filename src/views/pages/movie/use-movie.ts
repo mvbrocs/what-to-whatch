@@ -1,16 +1,18 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { selectAllMovies } from 'src/state/movies/selectors';
 import { useFetchMovies } from 'src/views/pages/hooks';
 import { getMoviesByGenre } from 'src/views/pages/utils';
-import { selectUser } from 'src/state/user/selectors';
+import { RootState } from 'src/state/root-reducer';
+import { selectAllMovies, selectMovieByID } from 'src/state/slices/movies';
+import { selectUser } from 'src/state/slices/user';
 
 export const useMovie = () => {
   const { id } = useParams();
   const movies = useSelector(selectAllMovies);
   const user = useSelector(selectUser);
-  const mainMovie = movies.find((movie) => movie.id.toString() === id);
+  const mainMovie =
+    useSelector((state: RootState) => id && selectMovieByID(state, id)) || null;
   const moviesByGenre = getMoviesByGenre(movies, mainMovie?.genre).filter(
     (movie) => movie.id !== mainMovie?.id,
   );

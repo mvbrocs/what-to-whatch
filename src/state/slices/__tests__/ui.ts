@@ -1,12 +1,15 @@
 import { createNextState } from '@reduxjs/toolkit';
 
+import { mockStore } from 'src/mocks';
 import {
   uiInitialState,
   uiReducer,
   toggleAuthorizationRequired,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-} from 'src/state/ui/slice';
+  selectIsAuthorizationRequired,
+  selectVideoPlayerFullscreen,
+} from 'src/state/slices/ui';
 
 describe('UI slice', () => {
   describe('actions', () => {
@@ -84,6 +87,20 @@ describe('UI slice', () => {
       });
 
       expect(uiReducer(uiInitialState, action)).toEqual(expectedState);
+    });
+  });
+
+  describe('selectors', () => {
+    it('should selectIsAuthorizationRequired', () => {
+      expect(selectIsAuthorizationRequired(mockStore)).toEqual(
+        uiInitialState.isAuthorizationRequired,
+      );
+    });
+
+    it('should selectVideoPlayerFullscreen', () => {
+      expect(selectVideoPlayerFullscreen(mockStore)).toEqual(
+        uiInitialState.videoPlayerFullscreen,
+      );
     });
   });
 });

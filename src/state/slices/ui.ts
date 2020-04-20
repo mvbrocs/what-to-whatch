@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { RootState } from 'src/state/root-reducer';
+
 type VideoPlayerFullscreenData = {
   background_image: string;
   background_color: string;
@@ -27,7 +29,7 @@ export const uiInitialState = {
   },
 } as State;
 
-export const slice = createSlice({
+const slice = createSlice({
   name: 'ui',
   initialState: uiInitialState,
   reducers: {
@@ -51,4 +53,10 @@ export const {
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
 } = slice.actions;
+
 export const uiReducer = slice.reducer;
+
+export const selectIsAuthorizationRequired = (state: RootState) =>
+  state.ui.isAuthorizationRequired;
+export const selectVideoPlayerFullscreen = (state: RootState) =>
+  state.ui.videoPlayerFullscreen;

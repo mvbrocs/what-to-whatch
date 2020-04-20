@@ -1,11 +1,15 @@
 import { createNextState } from '@reduxjs/toolkit';
 
 import { mockStore } from 'src/mocks';
-import { userInitialState, userReducer, UserState } from 'src/state/user/slice';
-import { selectUser } from 'src/state/user/selectors';
+import {
+  userInitialState,
+  userReducer,
+  UserState,
+  selectUser,
+} from 'src/state/slices/user';
 import { IUser } from 'src/api/login';
 
-describe('UI state', () => {
+describe('User slice', () => {
   describe('reducer', () => {
     it('should return initial state on bad action', () => {
       const action = {
@@ -36,7 +40,7 @@ describe('UI state', () => {
 
     it('should add Movie', () => {
       const action = {
-        type: 'user/addMovie',
+        type: 'user/addMovieToUserList',
         payload: 1,
       };
       const initialState = {
@@ -49,6 +53,25 @@ describe('UI state', () => {
 
       const expectedState = createNextState(initialState, (draft) => {
         draft?.movies.push(action.payload);
+      });
+
+      expect(userReducer(initialState, action)).toEqual(expectedState);
+    });
+
+    it('should remove Movie from user list', () => {
+      const action = {
+        type: 'user/removeMovieFromUserList',
+        payload: 2,
+      };
+      const initialState = {
+        movies: [1, 2, 3, 4],
+        avatar_url: 'url',
+        name: 'name',
+        id: 1,
+        email: 'email',
+      };
+      const expectedState = createNextState(initialState, (draft) => {
+        draft.movies = [1, 3, 4];
       });
 
       expect(userReducer(initialState, action)).toEqual(expectedState);

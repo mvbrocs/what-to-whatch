@@ -1,43 +1,55 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'connected-react-router';
 
 import {
   selectAllGenres,
   selectMoviesSlice,
-  selectMovieByRandom,
   selectAllMovies,
-} from 'src/state/movies/selectors';
+} from 'src/state/slices/movies';
 import {
   ALL_GENRES,
   toggleVideoPlayerFullscreenVisible,
   updateVideoPlayerFullscreenData,
-} from 'src/state/ui/slice';
+} from 'src/state/slices/ui';
 import { GenreClickHandler } from 'src/views/components/genres-list';
 import { useFetchMovies } from 'src/views/pages/hooks';
 import { getMoviesByGenre } from 'src/views/pages/utils';
-import { selectUser } from 'src/state/user/selectors';
+import {
+  addMovieToUserList,
+  removeMovieFromUserList,
+  selectUser,
+} from 'src/state/slices/user';
+import { Path } from 'src/routes';
+import { IFilm } from 'src/api/films';
 
 const START_MAX_VISIBLE_MOVIES = 8;
 const STEP_MAX_VISIBLE_MOVIES = 20;
+
+const getRandomMovie = (movies: IFilm[]) =>
+  movies.length ? movies[Math.floor(Math.random() * movies.length)] : null;
 
 export const useHome = () => {
   const genres = useSelector(selectAllGenres);
   const [activeGenre, setActiveGenre] = useState(ALL_GENRES);
   const [maxVisibleMovies, setMaxVisibleMovies] = useState(START_MAX_VISIBLE_MOVIES);
+
   const { loaded: moviesLoaded } = useSelector(selectMoviesSlice);
-  const mainMovie = useSelector(selectMovieByRandom);
   const movies = useSelector(selectAllMovies);
+  const [mainMovie] = useState(getRandomMovie(movies));
   const moviesByGenre = getMoviesByGenre(movies, activeGenre);
   const moviesByGenreAndMaxVisible = moviesByGenre.slice(0, maxVisibleMovies);
   const allMoviesIsVisible = moviesByGenre.length === moviesByGenreAndMaxVisible.length;
   const user = useSelector(selectUser);
+  const mainMovieInList = mainMovie && user?.movies.includes(mainMovie.id);
   const dispatch = useDispatch();
 
   const genreClickHandler: GenreClickHandler = (genre) => (event) => {
     event.preventDefault();
     setActiveGenre(genre);
 
-    if (maxVisibleMovies > START_MAX_VISIBLE_MOVIES) setMaxVisibleMovies(START_MAX_VISIBLE_MOVIES);
+    if (maxVisibleMovies > START_MAX_VISIBLE_MOVIES)
+      setMaxVisibleMovies(START_MAX_VISIBLE_MOVIES);
   };
 
   const btnShowMoreClickHandler = () =>
@@ -57,7 +69,17 @@ export const useHome = () => {
     dispatch(toggleVideoPlayerFullscreenVisible());
   };
 
-  const btnAddClickHandler = () => {};
+  const btnAddClickHandler = () => {
+    if (user && mainMovie) {
+      if (mainMovieInList) {
+        dispatch(removeMovieFromUserList(mainMovie.id));
+      } else {
+        dispatch(addMovieToUserList(mainMovie.id));
+      }
+    } else {
+      dispatch(push(Path.SIGN_IN));
+    }
+  };
 
   useFetchMovies();
 
@@ -69,6 +91,7 @@ export const useHome = () => {
     allMoviesIsVisible,
     mainMovie,
     user,
+    mainMovieInList,
     genreClickHandler,
     btnShowMoreClickHandler,
     btnPlayClickHandler,
