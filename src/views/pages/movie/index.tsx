@@ -1,6 +1,15 @@
 import React from 'react';
 
-import { TabPane, Tabs, MovieList, Header, Logo, UserBlock } from 'src/views/components';
+import {
+  TabPane,
+  Tabs,
+  MovieList,
+  Header,
+  Logo,
+  UserBlock,
+  BtnShowVideoPlayerFullscreen,
+  BtnAddMovieToMyList,
+} from 'src/views/components';
 import { formatRunTime } from './format-run-time';
 import { useMovie } from './use-movie';
 
@@ -43,19 +52,8 @@ const Movie = () => {
               </p>
 
               <div className="movie-card__buttons">
-                {/*<Btn onClick={}>*/}
-                {/*  <svg viewBox="0 0 19 19" width="19" height="19">*/}
-                {/*    <use xlinkHref="#play-s" />*/}
-                {/*  </svg>*/}
-                {/*  <span>Play</span>*/}
-                {/*</Btn>*/}
-
-                {/*<button className="btn btn--list movie-card__button" type="button">*/}
-                {/*  <svg viewBox="0 0 19 20" width="19" height="20">*/}
-                {/*    <use xlinkHref="#add" />*/}
-                {/*  </svg>*/}
-                {/*  <span>My list</span>*/}
-                {/*</button>*/}
+                <BtnShowVideoPlayerFullscreen movie={mainMovie} />
+                <BtnAddMovieToMyList movie={mainMovie} />
 
                 {/*<a href="add-review.html" className="btn movie-card__button">*/}
                 {/*  Add review*/}

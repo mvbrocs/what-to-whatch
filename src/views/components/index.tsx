@@ -9,3 +9,5 @@ export { default as UserBlock } from './user-block';
 export { default as VideoPlayer } from './video-player';
 export { default as VideoPlayerFullscreen } from './video-player-fullscreen';
 export { default as Btn } from './btn';
+export { default as BtnShowVideoPlayerFullscreen } from './btn-show-video-player-fullscreen';
+export { default as BtnAddMovieToMyList } from './btn-add-movie-to-my-list';

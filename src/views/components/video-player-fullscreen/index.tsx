@@ -51,7 +51,12 @@ const VideoPlayerFullscreen = ({
   return (
     <FullScreen enabled={fullscreen}>
       <div className="player" style={{ backgroundColor: backgroundColor }}>
-        <video ref={videoRef} src={videoLink} className="player__video" poster={backgroundImage} />
+        <video
+          ref={videoRef}
+          src={videoLink}
+          className="player__video"
+          poster={backgroundImage}
+        />
 
         {!fullscreen && (
           <>
