@@ -15,20 +15,24 @@ import { AppThunk } from 'src/state/store';
 type State = {
   loaded: boolean;
   loading: boolean;
+  didInvalidate: boolean;
   error: string | null;
 } & EntityState<IFilm>;
 
-export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
+const fetchMovies = createAsyncThunk('movies/getAll', async () => {
   const { data } = await api.films.getAll();
 
   return data;
 });
 
 const shouldFetchMovies = (state: RootState) => {
-  const moviesLoaded = state.movies.loaded;
-  const moviesLoading = state.movies.loading;
+  const movies = state.movies;
 
-  return !(moviesLoading || moviesLoaded);
+  if (!movies.loaded) return true;
+
+  if (movies.loading) return false;
+
+  return movies.didInvalidate;
 };
 
 export const fetchMoviesIfNeeded = (): AppThunk => (dispatch, getState) => {
@@ -40,6 +44,7 @@ export const fetchMoviesIfNeeded = (): AppThunk => (dispatch, getState) => {
 export const moviesInitialState = {
   loaded: false,
   loading: false,
+  didInvalidate: false,
   error: null,
 } as State;
 
@@ -48,12 +53,17 @@ export const moviesAdapter = createEntityAdapter<IFilm>();
 const slice = createSlice({
   name: 'movies',
   initialState: moviesAdapter.getInitialState(moviesInitialState),
-  reducers: {},
+  reducers: {
+    invalidate(state) {
+      state.didInvalidate = true;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.pending, (state: State) => {
       state.loaded = false;
       state.loading = true;
       state.error = null;
+      state.didInvalidate = false;
       moviesAdapter.setAll(state, []);
     });
     builder.addCase(fetchMovies.fulfilled, (state: State, action) => {
@@ -65,6 +75,8 @@ const slice = createSlice({
 });
 
 export const moviesReducer = slice.reducer;
+
+export const { invalidate: invalidateMovies } = slice.actions;
 
 export const selectMoviesSlice = (state: RootState) => state.movies;
 
