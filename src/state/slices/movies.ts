@@ -10,6 +10,7 @@ import { ALL_GENRES } from 'src/state/slices/ui';
 import { api } from 'src/api';
 import { IFilm } from 'src/api/films';
 import { RootState } from 'src/state/root-reducer';
+import { AppThunk } from 'src/state/store';
 
 type State = {
   loaded: boolean;
@@ -22,6 +23,19 @@ export const fetchMovies = createAsyncThunk('movies/getAll', async () => {
 
   return data;
 });
+
+const shouldFetchMovies = (state: RootState) => {
+  const moviesLoaded = state.movies.loaded;
+  const moviesLoading = state.movies.loading;
+
+  return !(moviesLoading || moviesLoaded);
+};
+
+export const fetchMoviesIfNeeded = (): AppThunk => (dispatch, getState) => {
+  if (shouldFetchMovies(getState())) return dispatch(fetchMovies());
+
+  return Promise.resolve();
+};
 
 export const moviesInitialState = {
   loaded: false,
